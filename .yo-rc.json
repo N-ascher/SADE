@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "3.10.0",
+    "baseName": "sade",
+    "packageName": "br.com.unicamp.sade",
+    "packageFolder": "br/com/unicamp/sade",
+    "serverPort": "8080",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "enableSocialSignIn": true,
+    "rememberMeKey": "5888aca001b99da96e954eefab97fb07368f9767",
+    "useSass": false,
+    "applicationType": "monolith",
+    "testFrameworks": [
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": [
+      "pt-br",
+      "en"
+    ]
+  }
+}
