@@ -85,6 +85,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Developer developer;
+
     public Long getId() {
         return id;
     }

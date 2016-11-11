@@ -61,4 +61,10 @@ public class Authority implements Serializable {
             "name='" + name + '\'' +
             "}";
     }
+
+    public static Authority valueOf(String name) {
+        Authority authority = new Authority();
+        authority.setName(name);
+        return authority;
+    }
 }
