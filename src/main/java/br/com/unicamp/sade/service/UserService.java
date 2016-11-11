@@ -1,10 +1,8 @@
 package br.com.unicamp.sade.service;
 
 import br.com.unicamp.sade.domain.Authority;
-import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.domain.User;
 import br.com.unicamp.sade.repository.AuthorityRepository;
-import br.com.unicamp.sade.repository.DeveloperRepository;
 import br.com.unicamp.sade.repository.PersistentTokenRepository;
 import br.com.unicamp.sade.repository.UserRepository;
 import br.com.unicamp.sade.security.AuthoritiesConstants;
@@ -18,10 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import javax.inject.Inject;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service class for managing users.
@@ -46,9 +47,6 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
-
-    @Inject
-    private DeveloperRepository developerRepository;
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -93,24 +91,6 @@ public class UserService {
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
                            String langKey) {
-        User newUser = createUserBase(login, password, firstName, lastName, email, langKey);
-        userRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
-        return newUser;
-    }
-
-    public User createDeveloper(String login, String password, String firstName, String lastName, String email,
-                                String langKey, Developer developer) {
-        User user = createUserBase(login, password, firstName, lastName, email, langKey);
-        Developer dev = developerRepository.save(developer);
-        user.setDeveloper(dev);
-        userRepository.save(user);
-        log.debug("Created Information for Developer: {}", user);
-        return user;
-    }
-
-    private User createUserBase(String login, String password, String firstName, String lastName, String email,
-                                String langKey) {
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
         Set<Authority> authorities = new HashSet<>();
@@ -128,6 +108,8 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        userRepository.save(newUser);
+        log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
 

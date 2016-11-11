@@ -1,19 +1,16 @@
 package br.com.unicamp.sade.web.rest;
 
 import br.com.unicamp.sade.SadeApp;
-
 import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.repository.DeveloperRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,8 +23,14 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Test class for the DeveloperResource REST controller.
@@ -47,11 +50,11 @@ public class DeveloperResourceIntTest {
     private static final String DEFAULT_DOCUMENT = "AAAAA";
     private static final String UPDATED_DOCUMENT = "BBBBB";
 
-    private static final String DEFAULT_LINKED_IN = "AAAAA";
-    private static final String UPDATED_LINKED_IN = "BBBBB";
+    private static final String DEFAULT_LINKED_IN = "https://www.linkedin.com/";
+    private static final String UPDATED_LINKED_IN = "https://www.linkedin.com/name";
 
-    private static final String DEFAULT_GIT_HUB = "AAAAA";
-    private static final String UPDATED_GIT_HUB = "BBBBB";
+    private static final String DEFAULT_GIT_HUB = "https://github.com/";
+    private static final String UPDATED_GIT_HUB = "https://github.com/name";
 
     private static final Integer DEFAULT_AVAILABILITY = 1;
     private static final Integer UPDATED_AVAILABILITY = 2;

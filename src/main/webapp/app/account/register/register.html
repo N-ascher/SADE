@@ -23,13 +23,236 @@
                 The password and its confirmation do not match!
             </div>
         </div>
-        <div class="col-md-4 col-md-offset-2">
-            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+    </div>
+    <div ng-show="!vm.success"  class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <ul class="nav nav-tabs nav-justified">
+                <li id="basic" class="{{vm.tabClass('basic')}}" ng-click="vm.changeTab('basic')"><a
+                        data-translate="register.tabs.basic">Basics
+                </a></li>
+                <li id="user" class="{{vm.tabClass('user')}}" ng-click="vm.changeTab('user')"><a
+                        data-translate="register.tabs.user">User</a></li>
+                <li id="experience"
+                    class="{{vm.tabClass('experience')}}" ng-click="vm.changeTab('experience')"><a
+                        data-translate="register.tabs.experience">Experience</a></li>
+            </ul>
+            <br/>
+        </div>
+    </div>
+    <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+        <div ng-show="vm.currentTab == 'basic'" class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label class="control-label" for="name" data-translate="register.form.basic.name">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                           placeholder="{{'register.form.basic.placeholder.name' | translate}}"
+                           ng-model="vm.developer.user.name" ng-minlength=2 ng-maxlength=50 required>
+                    <div ng-show="form.name.$dirty && form.name.$invalid">
+                        <p class="help-block"
+                           ng-show="form.name.$error.required"
+                           data-translate="register.messages.validate.name.required">
+                            Your name is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.name.$error.minlength" data-translate="register.messages.validate.name.minlength">
+                            Your name is required to be at least 2 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.name.$error.maxlength" data-translate="register.messages.validate.name.maxlength">
+                            Your name cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="phone" data-translate="register.form.basic.phone">Phone
+                        Number
+                    </label>
+                    <input type="tel" class="form-control" id="phone" name="phone"
+                           placeholder="{{'register.form.basic.placeholder.phone' | translate}}"
+                           ng-model="vm.developer.phoneNumber" ng-minlength=10 ng-maxlength=11>
+                    <div ng-show="form.phone.$dirty && form.phone.$invalid">
+                        <p class="help-block"
+                           ng-show="form.phone.$error.minlength" data-translate="register.messages.validate.phone.minlength">
+                            Your phone number is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phone.$error.maxlength" data-translate="register.messages.validate.phone.maxlength">
+                            Your phone number cannot be longer than 11 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="mobileNumber"
+                           data-translate="register.form.basic.mobileNumber">Cell phone number
+                    </label>
+                    <input type="tel" class="form-control" id="mobileNumber" name="mobileNumber"
+                           placeholder="{{'register.form.basic.placeholder.mobileNumber' | translate}}"
+                           ng-model="vm.developer.mobileNumber" ng-minlength=10 ng-maxlength=11 required>
+                    <div ng-show="form.mobileNumber.$dirty && form.mobileNumber.$invalid">
+                        <p class="help-block"
+                           ng-show="form.mobileNumber.$error.required"
+                           data-translate="register.messages.validate.mobileNumber.required">
+                            Your mobile phone number is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.mobileNumber.$error.minlength" data-translate="register.messages.validate.mobileNumber.minlength">
+                            Your mobile phone number is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.mobileNumber.$error.maxlength" data-translate="register.messages.validate.mobileNumber.maxlength">
+                            Your mobile phone number cannot be longer than 11 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="document"
+                           data-translate="register.form.basic.document">Cell phone number
+                    </label>
+                    <input type="tel" class="form-control" id="document" name="document"
+                           placeholder="{{'register.form.basic.placeholder.document' | translate}}"
+                           ng-model="vm.developer.document" ng-minlength=11 ng-maxlength=11 required>
+                    <div ng-show="form.document.$dirty && form.document.$invalid">
+                        <p class="help-block"
+                           ng-show="form.document.$error.required"
+                           data-translate="register.messages.validate.document.required">
+                            Your document is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.document.$error.minlength" data-translate="register.messages.validate.document.minlength">
+                            Your document is required to be at least 11 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.document.$error.maxlength" data-translate="register.messages.validate.document.maxlength">
+                            Your document cannot be longer than 11 characters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.street" for="field_street">
+                                Street</label>
+                            <input type="text" class="form-control" name="street" id="field_street"
+                                   placeholder="{{'register.form.basic.address.street' | translate}}"
+                                   ng-model="vm.developer.address.street" required
+                            />
+                            <div ng-show="form.street.$dirty && form.street.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.street.$error.required"
+                                   data-translate="register.messages.validate.street.required">
+                                    The address street is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.neighborhood" for="field_neighborhood">Neighborhood</label>
+                            <input type="text" class="form-control" name="neighborhood" id="field_neighborhood"
+                                   placeholder="{{'register.form.basic.address.neighborhood' | translate}}"
+                                   ng-model="vm.developer.address.neighborhood" required
+                            />
+                            <div ng-show="form.neighborhood.$dirty && form.neighborhood.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.neighborhood.$error.required"
+                                   data-translate="register.messages.validate.neighborhood.required">
+                                    The address neighborhood is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.number" for="field_number">Number</label>
+                            <input type="text" class="form-control" name="number" id="field_number"
+                                   placeholder="{{'register.form.basic.address.number' | translate}}"
+                                   ng-model="vm.developer.address.number" required
+                            />
+                            <div ng-show="form.number.$dirty && form.number.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.number.$error.required"
+                                   data-translate="register.messages.validate.number.required">
+                                    The address number is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.city" for="field_city">City</label>
+                            <input type="text" class="form-control" name="city" id="field_city"
+                                   placeholder="{{'register.form.basic.address.city' | translate}}"
+                                   ng-model="vm.developer.address.city" required
+                            />
+                            <div ng-show="form.city.$dirty && form.city.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.city.$error.required"
+                                   data-translate="register.messages.validate.city.required">
+                                    The address city is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.state" for="field_state">State</label>
+                            <input type="text" class="form-control" name="state" id="field_state"
+                                   placeholder="{{'register.form.basic.address.state' | translate}}"
+                                   ng-model="vm.developer.address.state" required
+                            />
+                            <div ng-show="form.state.$dirty && form.state.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.state.$error.required"
+                                   data-translate="register.messages.validate.state.required">
+                                    The address state is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.postalCode" for="field_postalCode">Postal Code</label>
+                            <input type="text" class="form-control" name="postalCode" id="field_postalCode"
+                                   placeholder="{{'register.form.basic.address.postalCode' | translate}}"
+                                   ng-model="vm.developer.address.postalCode" required
+                            />
+                            <div ng-show="form.postalCode.$dirty && form.postalCode.$invalid">
+                                <p class="help-block"
+                                   ng-show="form.postalCode.$error.required"
+                                   data-translate="register.messages.validate.postalCode.required">
+                                    The address postal code is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" data-translate="register.form.basic.address.complement" for="field_complement">Complement</label>
+                            <input type="text" class="form-control" name="complement" id="field_complement"
+                                   placeholder="{{'register.form.basic.address.complement' | translate}}"
+                                   ng-model="vm.developer.address.complement"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div ng-show="vm.currentTab == 'user'" class="row">
+            <div class="col-md-4 col-md-offset-2">
                 <div class="form-group">
                     <label class="control-label" for="login" data-translate="global.form.username">Username</label>
                     <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                           ng-model="vm.developer.user.login" ng-minlength=1 ng-maxlength=50
+                           ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                     <div ng-show="form.login.$dirty && form.login.$invalid">
                         <p class="help-block"
                                ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
@@ -52,7 +275,7 @@
                 <div class="form-group">
                     <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
+                           ng-model="vm.developer.user.email" ng-minlength=5 ng-maxlength=100 required>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
                                ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
@@ -75,7 +298,7 @@
                 <div class="form-group">
                     <label class="control-label" for="password" data-translate="global.form.newpassword">New password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                           ng-model="vm.developer.user.password" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.password.$dirty && form.password.$invalid">
                         <p class="help-block"
                                ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
@@ -90,7 +313,7 @@
                             Your password cannot be longer than 50 characters.
                         </p>
                     </div>
-                    <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                    <password-strength-bar password-to-check="vm.developer.user.password"></password-strength-bar>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
@@ -111,20 +334,159 @@
                         </p>
                     </div>
                 </div>
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
-            </form>
-            <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
-                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                <p></p>
+                <div ng-hide="true" class="alert alert-warning" data-translate="global.messages.info.authenticated"
+                     translate-compile>
+                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                </div>
+            </div>
+            <div ng-hide="true" class="col-md-4">
+                <br/>
+                <jh-social ng-provider="google"></jh-social>
+                <jh-social ng-provider="facebook"></jh-social>
+                <jh-social ng-provider="twitter"></jh-social>
+                <!-- jhipster-needle-add-social-button -->
             </div>
         </div>
-        <div class="col-md-4">
-            <br/>
-            <jh-social ng-provider="google"></jh-social>
-            <jh-social ng-provider="facebook"></jh-social>
-            <jh-social ng-provider="twitter"></jh-social>
-            <!-- jhipster-needle-add-social-button -->
+        <div ng-show="vm.currentTab == 'experience'" class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="form-group">
+                    <label class="control-label" for="availability"
+                           data-translate="register.form.experience.availability">
+                        Availability</label>
+                    <input type="number" class="form-control" id="availability" name="availability"
+                           placeholder="{{'register.form.experience.placeholder.availability' | translate}}"
+                           ng-model="vm.developer.availability" min="0" max="44" required>
+                    <div ng-show="form.availability.$dirty && form.availability.$invalid">
+                        <p class="help-block"
+                           ng-show="form.availability.$error.required" data-translate="register.messages.validate.availability.required">
+                            Your availability is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.availability.$error.min"
+                           data-translate="register.messages.validate.availability.required">
+                            Your availability is required to be at least 0 hours.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.availability.$error.max"
+                           data-translate="register.messages.validate.availability.required">
+                            Your availability is required to be at most 44 hours.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="prospectedBy"
+                           data-translate="register.form.experience.prospectedBy">
+                        Prospected by</label>
+                    <input type="text" class="form-control" id="prospectedBy" name="prospectedBy"
+                           placeholder="{{'register.form.experience.placeholder.prospectedBy' | translate}}"
+                           ng-model="vm.developer.prospectedBy" required>
+                    <div ng-show="form.prospectedBy.$dirty && form.prospectedBy.$invalid">
+                        <p class="help-block"
+                           ng-show="form.prospectedBy.$error.required" data-translate="register.messages.validate.prospectedBy.required">
+                            The prospected by field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="linkedIn"
+                           data-translate="register.form.experience.linkedIn">LinkedIn
+                    </label>
+                    <input type="url" class="form-control" id="linkedIn" name="linkedIn"
+                           placeholder="{{'register.form.experience.placeholder.linkedIn' | translate}}"
+                           ng-model="vm.developer.linkedIn">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="gitHub"
+                           data-translate="register.form.experience.gitHub">LinkedIn
+                    </label>
+                    <input type="url" class="form-control" id="gitHub" name="gitHub"
+                           placeholder="{{'register.form.experience.placeholder.gitHub' | translate}}"
+                           ng-model="vm.developer.gitHub">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label"
+                               data-translate="register.form.experience.technologies">What technologies do you master?
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label" for="technologyName"
+                                   data-translate="register.form.experience.technology.name">Name
+                            </label>
+                            <input type="text" class="form-control" id="technologyName" name="technologyName"
+                                   placeholder="{{'register.form.experience.placeholder.technology.name' | translate}}"
+                                   ng-model="vm.technology.name">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="technologyScore"
+                                   data-translate="register.form.experience.technology.score">Make a self-assessment of
+                                your knowledge in this technology.
+                            </label>
+                            <input type="number" class="form-control" id="technologyScore" name="technologyScore"
+                                   placeholder="{{'register.form.experience.placeholder.technology.score' | translate}}"
+                                   ng-model="vm.technology.score" min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <br/>
+                            <button ng-click="vm.addTech()" type="button"
+                                    class="btn btn-success">+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                            <tr>
+                                <th><span data-translate="register.form.experience.technology.header.name">Technology
+                                </span></th>
+                                <th><span data-translate="register.form.experience.technology.header.score">Score
+                                </span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tech in vm.developer.technologies track by tech.name">
+                                <td>{{tech.name}}</td>
+                                <td>{{tech.score}}</td>
+                                <td class="text-right">
+                                    <div class="btn-group flex-btn-group-container">
+                                        <button type="submit"
+                                                ng-click="vm.deleteTech(tech)"
+                                                class="btn btn-danger btn-sm">
+                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <button ng-show="vm.showPrevious()" ng-click="vm.previous()" type="button" class="btn btn-default"
+                        data-translate="register.form.previous">Previous
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button ng-show="vm.showNext()" ng-click="vm.next()" type="button" class="btn btn-default pull-right"
+                        data-translate="register.form.next">Next
+                </button>
+                <button ng-show="vm.showSubmit()" type="submit" ng-disabled="form.$invalid" class="btn btn-primary pull-right"
+                        data-translate="register.form.button">Register</button>
+            </div>
+        </div>
+    </form>
 </div>

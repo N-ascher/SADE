@@ -1,8 +1,10 @@
 package br.com.unicamp.sade.config;
 
-import br.com.unicamp.sade.security.*;
-import br.com.unicamp.sade.config.JHipsterProperties;
-
+import br.com.unicamp.sade.security.AjaxAuthenticationFailureHandler;
+import br.com.unicamp.sade.security.AjaxAuthenticationSuccessHandler;
+import br.com.unicamp.sade.security.AjaxLogoutSuccessHandler;
+import br.com.unicamp.sade.security.AuthoritiesConstants;
+import br.com.unicamp.sade.security.Http401UnauthorizedEntryPoint;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +16,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -110,6 +112,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and()
             .authorizeRequests()
             .antMatchers("/api/register").permitAll()
+            .antMatchers("/api/developers/register").permitAll()
             .antMatchers("/api/activate").permitAll()
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/account/reset_password/init").permitAll()

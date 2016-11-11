@@ -1,8 +1,62 @@
 {
     "register": {
         "title": "Cadastro",
+        "tabs": {
+            "basic": "Dados Básicos",
+            "user": "Cadastro de Usuário",
+            "experience": "Experiência"
+        },
         "form": {
-            "button": "Cadastre"
+            "button": "Cadastre",
+            "next": "Próximo",
+            "previous": "Voltar",
+            "basic": {
+                "title": "Dados Básicos",
+                "name": "Nome completo",
+                "phone": "Telefone",
+                "mobileNumber": "Celular",
+                "document": "CPF",
+                "address": {
+                    "street": "Logradouro",
+                    "number": "nº",
+                    "neighborhood": "Bairro",
+                    "city": "Cidade",
+                    "state": "Estado",
+                    "complement": "Complemento",
+                    "postalCode": "CEP"
+                },
+                "placeholder": {
+                    "name": "Seu nome completo",
+                    "phone": "Seu telefone",
+                    "mobileNumber": "Seu celular",
+                    "document": "Seu CPF"
+                }
+            },
+            "experience": {
+                "availability": "Qual sua disponibilidade semanal (em horas)?",
+                "prospectedBy": "Como teve conhecimento da Conpec?",
+                "linkedIn": "LinkedIn",
+                "gitHub": "GitHub",
+                "technologies": "Quais tecnologias você domina? Adicione as tecnologias que você tem conhecimento e faça uma auto avaliação",
+                "technology": {
+                    "name": "Tecnologia",
+                    "score": "Nota",
+                    "header": {
+                        "name": "Tecnologia",
+                        "score": "Nota"
+                    }
+                },
+                "placeholder": {
+                    "availability": "Sua disponibilidade (em horas)",
+                    "prospectedBy": "Como teve conhecimento da Conpec?",
+                    "linkedIn": "Seu LinkedIn",
+                    "gitHub": "Seu GitHub",
+                    "technology": {
+                        "name": "Tecnologia",
+                        "score": "Nota"
+                    }
+                }
+            }
         },
         "messages": {
             "validate": {
@@ -11,9 +65,46 @@
                     "minlength": "O usuário deve ter pelo menos 1 caractere",
                     "maxlength": "O usuário não pode ter mais de 50 caracteres",
                     "pattern": "Your login can only contain lower-case letters and digits"
+                },
+                "name": {
+                    "required": "O primeiro nome é obrigatório.",
+                    "minlength": "O primeiro nome deve ter pelo menos 2 caractere",
+                    "maxlength": "O primeiro nome não pode ter mais de 50 caracteres"
+                },
+                "phone": {
+                    "minlength": "O telefone deve ter pelo menos 10 caractere",
+                    "maxlength": "O telefone não pode ter mais de 11 caracteres"
+                },
+                "mobileNumber": {
+                    "required": "O número de celular é obrigatório.",
+                    "minlength": "O número de celular deve ter pelo menos 10 caractere",
+                    "maxlength": "O número de celular não pode ter mais de 11 caracteres"
+                },
+                "document": {
+                    "required": "O CPF é obrigatório.",
+                    "minlength": "O CPF deve ter pelo menos 10 caractere",
+                    "maxlength": "O CPF não pode ter mais de 11 caracteres"
+                },
+                "street": {
+                    "required": "O campo logradouro é obrigatória."
+                },
+                "neighborhood": {
+                    "required": "O campo bairro é obrigatório."
+                },
+                "number": {
+                    "required": "O campo número é obrigatório."
+                },
+                "city": {
+                    "required": "O campo cidade é obrigatório."
+                },
+                "state": {
+                    "required": "O campo estado é obrigatório."
+                },
+                "postalCode": {
+                    "required": "O campo CEP é obrigatório."
                 }
             },
-            "success": "<strong>Cadstro salvo com sucesso!</strong> Favor verificar seu e-mail para confirmar a conta.",
+            "success": "<strong>Cadastro salvo com sucesso!</strong> Favor verificar seu e-mail para confirmar a conta.",
             "error": {
                 "fail": "<strong>Erro ao realizar o cadastro!</strong> Favor tentar novamente mais tarde.",
                 "userexists": "<strong>Usuário já registrado!</strong> Favor escolher outro.",

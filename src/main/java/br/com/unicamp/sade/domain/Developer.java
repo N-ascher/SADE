@@ -1,12 +1,21 @@
 package br.com.unicamp.sade.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.URL;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Developer.
@@ -30,9 +39,11 @@ public class Developer implements Serializable {
     @Column(name = "document")
     private String document;
 
+    @URL
     @Column(name = "linked_in")
     private String linkedIn;
 
+    @URL
     @Column(name = "git_hub")
     private String gitHub;
 
@@ -42,12 +53,16 @@ public class Developer implements Serializable {
     @Column(name = "prospected_by")
     private String prospectedBy;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private Address address;
 
-    @OneToMany(mappedBy = "developer")
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
     private Set<Technology> technologies = new HashSet<>();
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User user;
 
     public Long getId() {
         return id;
@@ -184,6 +199,14 @@ public class Developer implements Serializable {
 
     public void setTechnologies(Set<Technology> technologies) {
         this.technologies = technologies;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
