@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "developer"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "technologies",
+            "otherEntityName": "technology",
+            "otherEntityRelationshipName": "developer"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobileNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "document",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linkedIn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gitHub",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "availability",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "prospectedBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161111231130",
+    "entityTableName": "developer",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no"
+}

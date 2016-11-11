@@ -1,0 +1,74 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDeveloperLabel" data-translate="sadeApp.developer.home.createOrEditLabel">Create or edit a Developer</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.developer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.developer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.phoneNumber" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                    ng-model="vm.developer.phoneNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.mobileNumber" for="field_mobileNumber">Mobile Number</label>
+            <input type="text" class="form-control" name="mobileNumber" id="field_mobileNumber"
+                    ng-model="vm.developer.mobileNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.document" for="field_document">Document</label>
+            <input type="text" class="form-control" name="document" id="field_document"
+                    ng-model="vm.developer.document"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.linkedIn" for="field_linkedIn">Linked In</label>
+            <input type="text" class="form-control" name="linkedIn" id="field_linkedIn"
+                    ng-model="vm.developer.linkedIn"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.gitHub" for="field_gitHub">Git Hub</label>
+            <input type="text" class="form-control" name="gitHub" id="field_gitHub"
+                    ng-model="vm.developer.gitHub"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.availability" for="field_availability">Availability</label>
+            <input type="number" class="form-control" name="availability" id="field_availability"
+                    ng-model="vm.developer.availability"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="sadeApp.developer.prospectedBy" for="field_prospectedBy">Prospected By</label>
+            <input type="text" class="form-control" name="prospectedBy" id="field_prospectedBy"
+                    ng-model="vm.developer.prospectedBy"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="sadeApp.developer.address" for="field_address">Address</label>
+            <select class="form-control" id="field_address" name="address" ng-model="vm.developer.address" ng-options="address as address.id for address in vm.addresses | orderBy:'id' track by address.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="sadeApp.developer.detail.title">Developer</span> {{vm.developer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sadeApp.developer.phoneNumber">Phone Number</span></dt>
+        <dd>
+            <span>{{vm.developer.phoneNumber}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.mobileNumber">Mobile Number</span></dt>
+        <dd>
+            <span>{{vm.developer.mobileNumber}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.document">Document</span></dt>
+        <dd>
+            <span>{{vm.developer.document}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.linkedIn">Linked In</span></dt>
+        <dd>
+            <span>{{vm.developer.linkedIn}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.gitHub">Git Hub</span></dt>
+        <dd>
+            <span>{{vm.developer.gitHub}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.availability">Availability</span></dt>
+        <dd>
+            <span>{{vm.developer.availability}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.prospectedBy">Prospected By</span></dt>
+        <dd>
+            <span>{{vm.developer.prospectedBy}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.developer.address">Address</span></dt>
+        <dd>
+            <a ui-sref="address-detail({id:vm.developer.address.id})">{{vm.developer.address.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="developer-detail.edit({id:vm.developer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

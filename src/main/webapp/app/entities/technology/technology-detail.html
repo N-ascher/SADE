@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="sadeApp.technology.detail.title">Technology</span> {{vm.technology.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sadeApp.technology.name">Name</span></dt>
+        <dd>
+            <span>{{vm.technology.name}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.technology.score">Score</span></dt>
+        <dd>
+            <span>{{vm.technology.score}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.technology.developer">Developer</span></dt>
+        <dd>
+            <a ui-sref="developer-detail({id:vm.technology.developer.id})">{{vm.technology.developer.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="technology-detail.edit({id:vm.technology.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

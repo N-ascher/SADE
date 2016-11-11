@@ -1,0 +1,24 @@
+{
+    "sadeApp": {
+        "technology" : {
+            "home": {
+                "title": "Technologies",
+                "createLabel": "Criar novo Technology",
+                "createOrEditLabel": "Criar ou editar Technology",
+                "search": "Pesquisar por Technology"
+            },
+            "created": "Um novo Technology é criado com o identificador {{ param }}",
+            "updated": "Um Technology é atualizado com o identificador {{ param }}",
+            "deleted": "Um Technology é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Technology {{ id }}?"
+            },
+            "detail": {
+                "title": "Technology"
+            },
+            "name": "Name",
+            "score": "Score",
+            "developer": "Developer"
+        }
+    }
+}

@@ -1,0 +1,37 @@
+
+
+entity Address {
+	street String
+    number String
+    neighborhood String
+    city String
+    state String
+    complement String
+    postalCode String
+}
+
+entity Technology {
+	name String
+    score Integer
+}
+
+entity Developer {
+	phoneNumber String
+	mobileNumber String
+	document String
+	linkedIn String
+	gitHub String
+	availability Integer
+    prospectedBy String
+}
+
+relationship OneToMany {
+	Developer{technologies} to Technology
+}
+
+relationship OneToOne {
+	Developer{address} to Address
+}
+paginate Developer with pagination
+
+service all with serviceImpl except Developer, Address, Technology
