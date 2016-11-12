@@ -49,7 +49,14 @@
         "messages": {
             "info": {
                 "authenticated": "Para <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">entrar</a>, utilize as seguintes contas padrões:<br/>- Administrador (usuário=\"admin\" and senha=\"admin\") <br/>- Usuário (usuário=\"user\" and senha=\"user\").",
-                "register": "Não possui uma conta ainda? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Crie uma nova conta</a>"
+                "register": {
+                    "text": "Quer ser um desenvolvedor da Conpec?",
+                    "button": "Registre-se aqui"
+                },
+                "login": {
+                    "text": "Já possui uma conta?",
+                    "button": "Entre"
+                }
             },
             "error": {
                 "dontmatch" : "A senha e sua confirmação devem ser iguais!"
@@ -122,5 +129,5 @@
         "emailexists": "Este email já está cadastrado!",
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID"
     },
-    "footer": "Este é o seu rodapé"
+    "footer": "CONPEC - SADE - Sistema de Acompanhamento de Desenvolvedores Externos"
 }

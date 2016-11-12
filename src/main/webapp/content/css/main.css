@@ -73,7 +73,7 @@ Logo styles
 }
 
 .logo .logo-img {
-    height: 45px;
+    height: 40px;
     display: inline-block;
 }
 
@@ -117,6 +117,12 @@ only screen and (                min-resolution: 2dppx) {
         background: url("../images/hipster2x.png") no-repeat center top;
         background-size: contain;
     }
+
+    .conpec {
+        background: url("../images/conpec.png") no-repeat center top;
+        background-size: contain;
+    }
+
 }
 
 /* ==========================================================================

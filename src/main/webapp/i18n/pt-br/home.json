@@ -1,7 +1,7 @@
 {
     "home": {
-        "title": "Bem vindo, Java Hipster!",
-        "subtitle": "Esta é  a página principal",
+        "title": "Bem vindo ao SADE!",
+        "subtitle": "O SADE (Sistema de Acompanhamento de Desenvolvedores Externos) é o banco de desenvolvedores da Conpec. Por meio dele selecionamos desenvolvedores para nossos projetos.",
         "logged": {
             "message": "Você está logado como \"{{username}}\"."
         },
