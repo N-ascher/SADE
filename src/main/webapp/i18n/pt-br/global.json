@@ -5,13 +5,6 @@
         "menu": {
             "home": "Início",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-            "entities": {
-                "main": "Entidades",
-                "address": "Address",
-                "technology": "Technology",
-                "developer": "Developer",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
-            },
             "account": {
                 "main": "Conta",
                 "settings": "Configuração",
@@ -26,6 +19,7 @@
                 "userManagement": "Gerenciamento de usuário",
                 "tracker": "Rastreamento de usuário",
                 "audits": "Auditorias",
+                "developer": "Gerenciamento de desenvolvedores",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "system": {

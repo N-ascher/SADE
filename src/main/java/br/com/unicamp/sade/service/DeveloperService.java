@@ -47,6 +47,8 @@ public class DeveloperService {
         developer.setTechnologies(technologies);
         developer.setUser(user);
 
+        technologies.forEach(technology -> technology.setDeveloper(developer));
+
         Developer created = developerRepository.save(developer);
         log.debug("Created information: Developer={}", created);
         return created;

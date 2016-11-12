@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="developer.new" >
+                <button ng-hide="true" class="btn btn-primary" ui-sref="developer.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="sadeApp.developer.home.createLabel">
                         Create new Developer
@@ -18,31 +18,23 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="phoneNumber"><span data-translate="sadeApp.developer.phoneNumber">Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="mobileNumber"><span data-translate="sadeApp.developer.mobileNumber">Mobile Number</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="document"><span data-translate="sadeApp.developer.document">Document</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="linkedIn"><span data-translate="sadeApp.developer.linkedIn">Linked In</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="gitHub"><span data-translate="sadeApp.developer.gitHub">Git Hub</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.firstName"><span data-translate="sadeApp.developer.name">Name</span>
+                        <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span data-translate="sadeApp.developer.user">User</span>
+                        <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span data-translate="sadeApp.developer.mobileNumber">Mobile Number</span></th>
+                    <th><span data-translate="sadeApp.developer.linkedIn">Linked In</span></th>
                     <th jh-sort-by="availability"><span data-translate="sadeApp.developer.availability">Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="prospectedBy"><span data-translate="sadeApp.developer.prospectedBy">Prospected By</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="address.id"><span data-translate="sadeApp.developer.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="developer in vm.developers track by developer.id">
-                    <td><a ui-sref="developer-detail({id:developer.id})">{{developer.id}}</a></td>
-                    <td>{{developer.phoneNumber}}</td>
+                    <td>{{developer.user.firstName}} {{developer.user.lastName}}</td>
+                    <td>{{developer.user.login}}</td>
                     <td>{{developer.mobileNumber}}</td>
-                    <td>{{developer.document}}</td>
-                    <td>{{developer.linkedIn}}</td>
-                    <td>{{developer.gitHub}}</td>
-                    <td>{{developer.availability}}</td>
-                    <td>{{developer.prospectedBy}}</td>
-                    <td>
-                        <a ui-sref="address-detail({id:developer.address.id})">{{developer.address.id}}</a>
-                    </td>
+                    <td><a href="{{developer.linkedIn}}">{{developer.linkedIn}}</a></td>
+                    <td>{{developer.availability}}h</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -51,7 +43,7 @@
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
                             </button>
-                            <button type="submit"
+                            <button ng-hide="true" type="submit"
                                     ui-sref="developer.edit({id:developer.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>

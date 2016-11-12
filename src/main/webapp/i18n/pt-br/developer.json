@@ -2,29 +2,45 @@
     "sadeApp": {
         "developer" : {
             "home": {
-                "title": "Developers",
-                "createLabel": "Criar novo Developer",
-                "createOrEditLabel": "Criar ou editar Developer",
-                "search": "Pesquisar por Developer"
+                "title": "Desenvolvedores",
+                "createLabel": "Criar novo Desenvolvedor",
+                "createOrEditLabel": "Criar ou editar Desenvolvedor",
+                "search": "Pesquisar por Desenvolvedor"
             },
-            "created": "Um novo Developer é criado com o identificador {{ param }}",
-            "updated": "Um Developer é atualizado com o identificador {{ param }}",
-            "deleted": "Um Developer é deletado com o identificador {{ param }}",
+            "created": "Um novo Desenvolvedor é criado com o identificador {{ param }}",
+            "updated": "Um Desenvolvedor é atualizado com o identificador {{ param }}",
+            "deleted": "Um Desenvolvedor é deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Developer {{ id }}?"
+                "question": "Tem certeza de que deseja excluir o(a) desenvolvedor(a) {{ id }}?"
             },
             "detail": {
-                "title": "Developer"
+                "title": "Desenvolvedor"
             },
-            "phoneNumber": "Phone Number",
-            "mobileNumber": "Mobile Number",
-            "document": "Document",
+            "phoneNumber": "Telefone",
+            "mobileNumber": "Celular",
+            "document": "CPF",
             "linkedIn": "Linked In",
             "gitHub": "Git Hub",
-            "availability": "Availability",
-            "prospectedBy": "Prospected By",
-            "address": "Address",
-            "technologies": "Technologies"
+            "availability": "Disponibilidade (em hrs)",
+            "prospectedBy": "Como conheceu a conpec?",
+            "address": "Endereço",
+            "technologies": "Tecnologias",
+            "name": "Nome",
+            "user": "Usuário",
+            "address" : {
+                "title": "Endereço",
+                "street": "Logradouro",
+                "number": "nº",
+                "neighborhood": "Bairro",
+                "city": "Cidade",
+                "state": "Estado",
+                "complement": "Complemento",
+                "postalCode": "CEP"
+            },
+            "technologies": {
+                "name": "Tecnologia",
+                "score": "Nota"
+            }
         }
     }
 }

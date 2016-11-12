@@ -1,42 +1,106 @@
 
 <div>
-    <h2><span data-translate="sadeApp.developer.detail.title">Developer</span> {{vm.developer.id}}</h2>
+    <h2><span data-translate="sadeApp.developer.detail.title">Developer</span> {{vm.developer.user.firstName}}
+        {{vm.developer.user.lastName}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="sadeApp.developer.phoneNumber">Phone Number</span></dt>
-        <dd>
-            <span>{{vm.developer.phoneNumber}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.mobileNumber">Mobile Number</span></dt>
-        <dd>
-            <span>{{vm.developer.mobileNumber}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.document">Document</span></dt>
-        <dd>
-            <span>{{vm.developer.document}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.linkedIn">Linked In</span></dt>
-        <dd>
-            <span>{{vm.developer.linkedIn}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.gitHub">Git Hub</span></dt>
-        <dd>
-            <span>{{vm.developer.gitHub}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.availability">Availability</span></dt>
-        <dd>
-            <span>{{vm.developer.availability}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.prospectedBy">Prospected By</span></dt>
-        <dd>
-            <span>{{vm.developer.prospectedBy}}</span>
-        </dd>
-        <dt><span data-translate="sadeApp.developer.address">Address</span></dt>
-        <dd>
-            <a ui-sref="address-detail({id:vm.developer.address.id})">{{vm.developer.address.id}}</a>
-        </dd>
-    </dl>
+
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="dl-horizontal jh-entity-details">
+                <dt><span data-translate="sadeApp.developer.name">Name</span></dt>
+                <dd>
+                   <span>{{vm.developer.user.firstName}} {{vm.developer.user.lastName}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.user">User</span></dt>
+                <dd>
+                    <span>{{vm.developer.user.login}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{vm.developer.phoneNumber}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.mobileNumber">Mobile Number</span></dt>
+                <dd>
+                    <span>{{vm.developer.mobileNumber}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.document">Document</span></dt><dd>
+                    <span>{{vm.developer.document}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.linkedIn">Linked In</span></dt>
+                <dd>
+                    <span><a href="{{vm.developer.linkedIn}}">{{vm.developer.linkedIn}}</a></span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.gitHub">Git Hub</span></dt>
+                <dd>
+                    <span><a href="{{vm.developer.gitHub}}">{{vm.developer.gitHub}}</a></span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.availability">Availability</span></dt>
+                <dd>
+                    <span>{{vm.developer.availability}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.prospectedBy">Prospected By</span></dt>
+                <dd>
+                    <span>{{vm.developer.prospectedBy}}</span>
+                </dd>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h4><span data-translate="sadeApp.developer.address.title">Address</span></h4>
+
+            <dl class="dl-horizontal jh-entity-details">
+                <dt><span data-translate="sadeApp.developer.address.street">Street</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.street}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.number">Number</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.number}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.neighborhood">Neighborhood</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.neighborhood}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.city">City</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.city}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.state">State</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.state}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.complement">Complement</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.complement}}</span>
+                </dd>
+                <dt><span data-translate="sadeApp.developer.address.postalCode">Postal Code</span></dt>
+                <dd>
+                    <span>{{vm.developer.address.postalCode}}</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th><span data-translate="sadeApp.developer.technologies.name">Technology
+                                </span></th>
+                    <th><span data-translate="sadeApp.developer.technologies.score">Score
+                                </span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="tech in vm.developer.technologies track by tech.name">
+                    <td>{{tech.name}}</td>
+                    <td>{{tech.score}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
