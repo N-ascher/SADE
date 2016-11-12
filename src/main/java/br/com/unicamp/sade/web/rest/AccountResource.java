@@ -1,7 +1,6 @@
 package br.com.unicamp.sade.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-
+import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.domain.PersistentToken;
 import br.com.unicamp.sade.domain.User;
 import br.com.unicamp.sade.repository.PersistentTokenRepository;
@@ -10,10 +9,10 @@ import br.com.unicamp.sade.security.SecurityUtils;
 import br.com.unicamp.sade.service.MailService;
 import br.com.unicamp.sade.service.UserService;
 import br.com.unicamp.sade.service.dto.UserDTO;
+import br.com.unicamp.sade.web.rest.util.HeaderUtil;
 import br.com.unicamp.sade.web.rest.vm.KeyAndPasswordVM;
 import br.com.unicamp.sade.web.rest.vm.ManagedUserVM;
-import br.com.unicamp.sade.web.rest.util.HeaderUtil;
-
+import com.codahale.metrics.annotation.Timed;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing the current user's account.
@@ -61,7 +61,8 @@ public class AccountResource {
     @PostMapping(path = "/register",
                     produces={MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
     @Timed
-    public ResponseEntity<?> registerAccount(@Valid @RequestBody ManagedUserVM managedUserVM, HttpServletRequest request) {
+    public ResponseEntity<?> registerAccount(@Valid @RequestBody ManagedUserVM managedUserVM, HttpServletRequest request,
+                                             @RequestBody Developer developer) {
 
         HttpHeaders textPlainHeaders = new HttpHeaders();
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
@@ -71,9 +72,9 @@ public class AccountResource {
             .orElseGet(() -> userRepository.findOneByEmail(managedUserVM.getEmail())
                 .map(user -> new ResponseEntity<>("e-mail address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
-                    User user = userService.createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
+                    User user = userService.createDeveloper(managedUserVM.getLogin(), managedUserVM.getPassword(),
                     managedUserVM.getFirstName(), managedUserVM.getLastName(), managedUserVM.getEmail().toLowerCase(),
-                    managedUserVM.getLangKey());
+                    managedUserVM.getLangKey(),developer);
                     String baseUrl = request.getScheme() + // "http"
                     "://" +                                // "://"
                     request.getServerName() +              // "myhost"
