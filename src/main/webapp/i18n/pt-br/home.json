@@ -14,6 +14,16 @@
             "follow": "contate @java_hipster on Twitter"
         },
         "like": "Se você gosta do JHipster, não se esqueça de avaliar no",
-        "github": "GitHub"
+        "github": "GitHub",
+        "info": {
+            "register": {
+                "text": "Quer ser um desenvolvedor da Conpec?",
+                "button": "Registre-se aqui"
+            },
+            "login": {
+                "text": "Já possui uma conta?",
+                "button": "Entre"
+            }
+        }
     }
 }

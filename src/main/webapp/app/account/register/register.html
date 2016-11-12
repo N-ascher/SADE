@@ -438,7 +438,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <br/>
-                            <button ng-click="vm.addTech()" type="button"
+                            <button id="addTech" ng-click="vm.addTech()" type="button"
                                     class="btn btn-success">+
                             </button>
                         </div>
@@ -461,7 +461,7 @@
                                 <td>{{tech.score}}</td>
                                 <td class="text-right">
                                     <div class="btn-group flex-btn-group-container">
-                                        <button type="submit"
+                                        <button id="deleteTech{{tech.name}}" type="submit"
                                                 ng-click="vm.deleteTech(tech)"
                                                 class="btn btn-danger btn-sm">
                                             <span class="glyphicon glyphicon-remove-circle"></span>
@@ -476,15 +476,18 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-2">
-                <button ng-show="vm.showPrevious()" ng-click="vm.previous()" type="button" class="btn btn-default"
+                <button id="previous" ng-show="vm.showPrevious()" ng-click="vm.previous()" type="button"
+                        class="btn btn-default"
                         data-translate="register.form.previous">Previous
                 </button>
             </div>
             <div class="col-md-4">
-                <button ng-show="vm.showNext()" ng-click="vm.next()" type="button" class="btn btn-default pull-right"
+                <button id="next" ng-show="vm.showNext()" ng-click="vm.next()" type="button"
+                        class="btn btn-default pull-right"
                         data-translate="register.form.next">Next
                 </button>
-                <button ng-show="vm.showSubmit()" type="submit" ng-disabled="form.$invalid" class="btn btn-primary pull-right"
+                <button id="register" ng-show="vm.showSubmit()" type="submit" ng-disabled="form.$invalid"
+                         class="btn btn-primary pull-right"
                         data-translate="register.form.button">Register</button>
             </div>
         </div>

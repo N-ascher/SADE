@@ -13,22 +13,22 @@
 
                 <div class="row">
                     <div class="col-md-4" ng-switch-when="false">
-                        <p class="lead" data-translate="global.messages.info.login.text">
+                        <p class="lead" data-translate="home.info.login.text">
                             Log in
                         </p>
                         <div>
-                            <button type="button" ng-click="vm.login()" class="btn btn-primary"
-                                    data-translate="global.messages.info.login.button">Already have an account?</button>
+                            <button id="login" type="button" ng-click="vm.login()" class="btn btn-primary"
+                                    data-translate="home.info.login.button">Login</button>
                         </div>
                     </div>
 
                     <div class="col-md-8" ng-switch-when="false">
-                        <p class="lead" data-translate="global.messages.info.register.text">
+                        <p class="lead" data-translate="home.info.register.text">
                             You don't have an account yet?
                         </p>
                         <div>
-                            <button type="button" ui-sref="register" class="btn btn-primary"
-                                    data-translate="global.messages.info.register.button">Register a new account</button>
+                            <button id="register" type="button" ui-sref="register" class="btn btn-primary"
+                                    data-translate="home.info.register.button">Register a new account</button>
                         </div>
                     </div>
                 </div>
