@@ -25,14 +25,17 @@
                 "main": "Administração",
                 "userManagement": "Gerenciamento de usuário",
                 "tracker": "Rastreamento de usuário",
+                "audits": "Auditorias",
+                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+            },
+            "system": {
+                "main": "Sistema",
                 "metrics": "Métricas",
                 "health": "Estado do Sistema",
                 "configuration": "Configuração",
                 "logs": "Logs",
-                "audits": "Auditorias",
                 "apidocs": "API",
-                "database": "Banco de dados",
-                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+                "database": "Banco de dados"
             },
             "language": "Idioma"
         },

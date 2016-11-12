@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+    <button id="loginClose" type="button" class="close" data-dismiss="modal" aria-hidden="true"
             ng-click="vm.cancel()">&times;</button>
     <h4 class="modal-title" data-translate="login.title">Sign in</h4>
 </div>
@@ -32,7 +32,8 @@
                         <span data-translate="login.form.rememberme">Remember me</span>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary" data-translate="login.form.button">Sign in</button>
+                <button id="loginSubmit" type="submit" class="btn btn-primary" data-translate="login.form.button">Sign
+                    in</button>
             </form>
             <p></p>
             <div class="alert alert-warning">
