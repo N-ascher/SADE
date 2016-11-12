@@ -1,6 +1,8 @@
 package br.com.unicamp.sade.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +27,7 @@ public class Technology implements Serializable {
     private Integer score;
 
     @ManyToOne
+    @JsonIgnore
     private Developer developer;
 
     public Long getId() {

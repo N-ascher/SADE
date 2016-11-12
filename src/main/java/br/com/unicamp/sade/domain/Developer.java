@@ -47,7 +47,6 @@ public class Developer implements Serializable {
     private Address address;
 
     @OneToMany(mappedBy = "developer")
-    @JsonIgnore
     private Set<Technology> technologies = new HashSet<>();
 
     public Long getId() {
