@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/address',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['REGISTERED_USER'],
                 pageTitle: 'sadeApp.address.home.title'
             },
             views: {
@@ -35,7 +35,7 @@
             parent: 'entity',
             url: '/address/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['REGISTERED_USER'],
                 pageTitle: 'sadeApp.address.detail.title'
             },
             views: {
@@ -67,7 +67,7 @@
             parent: 'address-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -92,7 +92,7 @@
             parent: 'address',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -126,7 +126,7 @@
             parent: 'address',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -151,7 +151,7 @@
             parent: 'address',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
