@@ -1,0 +1,35 @@
+
+
+
+entity Interview {
+    interviewerId Integer
+}
+
+entity Comment {
+	content String
+}
+
+entity PreDefinedQuestion {
+	title String
+}
+
+entity InterviewQuestion {
+	questionTitle String
+    response String
+}
+
+relationship OneToOne {
+	Interview{interviewerId} to User
+}
+
+relationship OneToMany {
+	Interview{comments} to Comment
+}
+
+relationship ManyToOne {
+	InterviewQuestion{questionId} to PreDefinedQuestion
+}
+
+paginate PreDefinedQuestion with pagination
+
+service all with serviceImpl except Interview, PreDefinedQuestion
