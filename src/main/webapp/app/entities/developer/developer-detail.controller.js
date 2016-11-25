@@ -5,9 +5,9 @@
         .module('sadeApp')
         .controller('DeveloperDetailController', DeveloperDetailController);
 
-    DeveloperDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Developer', 'Address', 'Technology'];
+    DeveloperDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Developer', 'Technology'];
 
-    function DeveloperDetailController($scope, $rootScope, $stateParams, previousState, entity, Developer, Address, Technology) {
+    function DeveloperDetailController($scope, $rootScope, $stateParams, previousState, entity, Developer, Technology) {
         var vm = this;
 
         vm.developer = entity;
