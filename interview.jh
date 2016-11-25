@@ -3,6 +3,7 @@
 
 entity Interview {
     interviewerId Integer
+    hourValue Integer
 }
 
 entity Comment {
