@@ -9,73 +9,53 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('developer', {
+        .state('address', {
             parent: 'entity',
-            url: '/developer?page&sort&search',
+            url: '/address',
             data: {
                 authorities: ['REGISTERED_USER'],
-                pageTitle: 'sadeApp.developer.home.title'
+                pageTitle: 'sadeApp.address.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/developer/developers.html',
-                    controller: 'DeveloperController',
+                    templateUrl: 'app/entities/address/addresses.html',
+                    controller: 'AddressController',
                     controllerAs: 'vm'
                 }
             },
-            params: {
-                page: {
-                    value: '1',
-                    squash: true
-                },
-                sort: {
-                    value: 'id,asc',
-                    squash: true
-                },
-                search: null
-            },
             resolve: {
-                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
-                    return {
-                        page: PaginationUtil.parsePage($stateParams.page),
-                        sort: $stateParams.sort,
-                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
-                        ascending: PaginationUtil.parseAscending($stateParams.sort),
-                        search: $stateParams.search
-                    };
-                }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('developer');
+                    $translatePartialLoader.addPart('address');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('developer-detail', {
+        .state('address-detail', {
             parent: 'entity',
-            url: '/developer/{id}',
+            url: '/address/{id}',
             data: {
                 authorities: ['REGISTERED_USER'],
-                pageTitle: 'sadeApp.developer.detail.title'
+                pageTitle: 'sadeApp.address.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/developer/developer-detail.html',
-                    controller: 'DeveloperDetailController',
+                    templateUrl: 'app/entities/address/address-detail.html',
+                    controller: 'AddressDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('developer');
+                    $translatePartialLoader.addPart('address');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Developer', function($stateParams, Developer) {
-                    return Developer.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Address', function($stateParams, Address) {
+                    return Address.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'developer',
+                        name: $state.current.name || 'address',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -83,22 +63,22 @@
                 }]
             }
         })
-        .state('developer-detail.edit', {
-            parent: 'developer-detail',
+        .state('address-detail.edit', {
+            parent: 'address-detail',
             url: '/detail/edit',
             data: {
                 authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/developer/developer-dialog.html',
-                    controller: 'DeveloperDialogController',
+                    templateUrl: 'app/entities/address/address-dialog.html',
+                    controller: 'AddressDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Developer', function(Developer) {
-                            return Developer.get({id : $stateParams.id}).$promise;
+                        entity: ['Address', function(Address) {
+                            return Address.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -108,84 +88,84 @@
                 });
             }]
         })
-        .state('developer.new', {
-            parent: 'developer',
+        .state('address.new', {
+            parent: 'address',
             url: '/new',
             data: {
                 authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/developer/developer-dialog.html',
-                    controller: 'DeveloperDialogController',
+                    templateUrl: 'app/entities/address/address-dialog.html',
+                    controller: 'AddressDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                phoneNumber: null,
-                                mobileNumber: null,
-                                document: null,
-                                linkedIn: null,
-                                gitHub: null,
-                                availability: null,
-                                prospectedBy: null,
+                                street: null,
+                                number: null,
+                                neighborhood: null,
+                                city: null,
+                                state: null,
+                                complement: null,
+                                postalCode: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('developer', null, { reload: 'developer' });
+                    $state.go('address', null, { reload: 'address' });
                 }, function() {
-                    $state.go('developer');
+                    $state.go('address');
                 });
             }]
         })
-        .state('developer.edit', {
-            parent: 'developer',
+        .state('address.edit', {
+            parent: 'address',
             url: '/{id}/edit',
             data: {
                 authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/developer/developer-dialog.html',
-                    controller: 'DeveloperDialogController',
+                    templateUrl: 'app/entities/address/address-dialog.html',
+                    controller: 'AddressDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Developer', function(Developer) {
-                            return Developer.get({id : $stateParams.id}).$promise;
+                        entity: ['Address', function(Address) {
+                            return Address.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('developer', null, { reload: 'developer' });
+                    $state.go('address', null, { reload: 'address' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('developer.delete', {
-            parent: 'developer',
+        .state('address.delete', {
+            parent: 'address',
             url: '/{id}/delete',
             data: {
                 authorities: ['REGISTERED_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/developer/developer-delete-dialog.html',
-                    controller: 'DeveloperDeleteController',
+                    templateUrl: 'app/entities/address/address-delete-dialog.html',
+                    controller: 'AddressDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Developer', function(Developer) {
-                            return Developer.get({id : $stateParams.id}).$promise;
+                        entity: ['Address', function(Address) {
+                            return Address.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('developer', null, { reload: 'developer' });
+                    $state.go('address', null, { reload: 'address' });
                 }, function() {
                     $state.go('^');
                 });
