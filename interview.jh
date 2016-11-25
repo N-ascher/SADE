@@ -31,6 +31,10 @@ relationship ManyToOne {
 	InterviewQuestion{questionId} to PreDefinedQuestion
 }
 
+relationship ManyToOne {
+	Interview{questions} to InterviewQuestion
+}
+
 paginate PreDefinedQuestion with pagination
 
 service all with serviceImpl except Interview, PreDefinedQuestion
