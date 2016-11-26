@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="sadeApp.interviewQuestion.detail.title">Interview Question</span> {{vm.interviewQuestion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="sadeApp.interviewQuestion.questionTitle">Question Title</span></dt>
+        <dd>
+            <span>{{vm.interviewQuestion.questionTitle}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.interviewQuestion.response">Response</span></dt>
+        <dd>
+            <span>{{vm.interviewQuestion.response}}</span>
+        </dd>
+        <dt><span data-translate="sadeApp.interviewQuestion.questionId">Question Id</span></dt>
+        <dd>
+            <a ui-sref="pre-defined-question-detail({id:vm.interviewQuestion.questionId.id})">{{vm.interviewQuestion.questionId.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="interview-question-detail.edit({id:vm.interviewQuestion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,24 @@
+{
+    "sadeApp": {
+        "interviewQuestion" : {
+            "home": {
+                "title": "Interview Questions",
+                "createLabel": "Create a new Interview Question",
+                "createOrEditLabel": "Create or edit a Interview Question",
+                "search": "Search for Interview Question"
+            },
+            "created": "A new Interview Question is created with identifier {{ param }}",
+            "updated": "A Interview Question is updated with identifier {{ param }}",
+            "deleted": "A Interview Question is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Interview Question {{ id }}?"
+            },
+            "detail": {
+                "title": "Interview Question"
+            },
+            "questionTitle": "Question Title",
+            "response": "Response",
+            "questionId": "Question Id"
+        }
+    }
+}

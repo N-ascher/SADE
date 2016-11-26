@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "interviewerId",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "interview"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comments",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "interview"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "questions",
+            "otherEntityName": "interviewQuestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "hourValue",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161125231707",
+    "entityTableName": "interview",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

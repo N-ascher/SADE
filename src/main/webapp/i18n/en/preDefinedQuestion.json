@@ -1,0 +1,22 @@
+{
+    "sadeApp": {
+        "preDefinedQuestion" : {
+            "home": {
+                "title": "Pre Defined Questions",
+                "createLabel": "Create a new Pre Defined Question",
+                "createOrEditLabel": "Create or edit a Pre Defined Question",
+                "search": "Search for Pre Defined Question"
+            },
+            "created": "A new Pre Defined Question is created with identifier {{ param }}",
+            "updated": "A Pre Defined Question is updated with identifier {{ param }}",
+            "deleted": "A Pre Defined Question is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pre Defined Question {{ id }}?"
+            },
+            "detail": {
+                "title": "Pre Defined Question"
+            },
+            "title": "Title"
+        }
+    }
+}

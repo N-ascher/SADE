@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="sadeApp.interviewQuestion.home.title">Interview Questions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="interview-question.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="sadeApp.interviewQuestion.home.createLabel">
+                        Create new Interview Question
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="sadeApp.interviewQuestion.questionTitle">Question Title</span></th>
+                    <th><span data-translate="sadeApp.interviewQuestion.response">Response</span></th>
+                    <th><span data-translate="sadeApp.interviewQuestion.questionId">Question Id</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="interviewQuestion in vm.interviewQuestions track by interviewQuestion.id">
+                    <td><a ui-sref="interview-question-detail({id:interviewQuestion.id})">{{interviewQuestion.id}}</a></td>
+                    <td>{{interviewQuestion.questionTitle}}</td>
+                    <td>{{interviewQuestion.response}}</td>
+                    <td>
+                        <a ui-sref="pre-defined-question-detail({id:interviewQuestion.questionId.id})">{{interviewQuestion.questionId.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="interview-question-detail({id:interviewQuestion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="interview-question.edit({id:interviewQuestion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="interview-question.delete({id:interviewQuestion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
