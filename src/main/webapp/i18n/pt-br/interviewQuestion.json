@@ -1,0 +1,24 @@
+{
+    "sadeApp": {
+        "interviewQuestion" : {
+            "home": {
+                "title": "Interview Questions",
+                "createLabel": "Criar novo Interview Question",
+                "createOrEditLabel": "Criar ou editar Interview Question",
+                "search": "Pesquisar por Interview Question"
+            },
+            "created": "Um novo Interview Question é criado com o identificador {{ param }}",
+            "updated": "Um Interview Question é atualizado com o identificador {{ param }}",
+            "deleted": "Um Interview Question é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Interview Question {{ id }}?"
+            },
+            "detail": {
+                "title": "Interview Question"
+            },
+            "questionTitle": "Question Title",
+            "response": "Response",
+            "questionId": "Question Id"
+        }
+    }
+}

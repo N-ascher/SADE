@@ -1,0 +1,23 @@
+{
+    "sadeApp": {
+        "comment" : {
+            "home": {
+                "title": "Comments",
+                "createLabel": "Criar novo Comment",
+                "createOrEditLabel": "Criar ou editar Comment",
+                "search": "Pesquisar por Comment"
+            },
+            "created": "Um novo Comment é criado com o identificador {{ param }}",
+            "updated": "Um Comment é atualizado com o identificador {{ param }}",
+            "deleted": "Um Comment é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Comment {{ id }}?"
+            },
+            "detail": {
+                "title": "Comment"
+            },
+            "content": "Content",
+            "interview": "Interview"
+        }
+    }
+}

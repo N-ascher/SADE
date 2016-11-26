@@ -1,0 +1,25 @@
+{
+    "sadeApp": {
+        "interview" : {
+            "home": {
+                "title": "Interviews",
+                "createLabel": "Criar novo Interview",
+                "createOrEditLabel": "Criar ou editar Interview",
+                "search": "Pesquisar por Interview"
+            },
+            "created": "Um novo Interview é criado com o identificador {{ param }}",
+            "updated": "Um Interview é atualizado com o identificador {{ param }}",
+            "deleted": "Um Interview é deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Interview {{ id }}?"
+            },
+            "detail": {
+                "title": "Interview"
+            },
+            "hourValue": "Hour Value",
+            "interviewerId": "Interviewer Id",
+            "comments": "Comments",
+            "questions": "Questions"
+        }
+    }
+}

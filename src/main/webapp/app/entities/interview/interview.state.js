@@ -9,53 +9,53 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('address', {
+        .state('interview', {
             parent: 'entity',
-            url: '/address',
+            url: '/interview',
             data: {
-                authorities: ['REGISTERED_USER'],
-                pageTitle: 'sadeApp.address.home.title'
+                authorities: ['ROLE_USER'],
+                pageTitle: 'sadeApp.interview.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/address/addresses.html',
-                    controller: 'AddressController',
+                    templateUrl: 'app/entities/interview/interviews.html',
+                    controller: 'InterviewController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('address');
+                    $translatePartialLoader.addPart('interview');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('address-detail', {
+        .state('interview-detail', {
             parent: 'entity',
-            url: '/address/{id}',
+            url: '/interview/{id}',
             data: {
-                authorities: ['REGISTERED_USER'],
-                pageTitle: 'sadeApp.address.detail.title'
+                authorities: ['ROLE_USER'],
+                pageTitle: 'sadeApp.interview.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/address/address-detail.html',
-                    controller: 'AddressDetailController',
+                    templateUrl: 'app/entities/interview/interview-detail.html',
+                    controller: 'InterviewDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('address');
+                    $translatePartialLoader.addPart('interview');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Address', function($stateParams, Address) {
-                    return Address.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Interview', function($stateParams, Interview) {
+                    return Interview.get({id : $stateParams.id}).$promise;
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
-                        name: $state.current.name || 'address',
+                        name: $state.current.name || 'interview',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
@@ -63,22 +63,22 @@
                 }]
             }
         })
-        .state('address-detail.edit', {
-            parent: 'address-detail',
+        .state('interview-detail.edit', {
+            parent: 'interview-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/interview/interview-dialog.html',
+                    controller: 'InterviewDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Interview', function(Interview) {
+                            return Interview.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
@@ -88,84 +88,78 @@
                 });
             }]
         })
-        .state('address.new', {
-            parent: 'address',
+        .state('interview.new', {
+            parent: 'interview',
             url: '/new',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/interview/interview-dialog.html',
+                    controller: 'InterviewDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                street: null,
-                                number: null,
-                                neighborhood: null,
-                                city: null,
-                                state: null,
-                                complement: null,
-                                postalCode: null,
+                                hourValue: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('interview', null, { reload: 'interview' });
                 }, function() {
-                    $state.go('address');
+                    $state.go('interview');
                 });
             }]
         })
-        .state('address.edit', {
-            parent: 'address',
+        .state('interview.edit', {
+            parent: 'interview',
             url: '/{id}/edit',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-dialog.html',
-                    controller: 'AddressDialogController',
+                    templateUrl: 'app/entities/interview/interview-dialog.html',
+                    controller: 'InterviewDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Interview', function(Interview) {
+                            return Interview.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('interview', null, { reload: 'interview' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('address.delete', {
-            parent: 'address',
+        .state('interview.delete', {
+            parent: 'interview',
             url: '/{id}/delete',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/address/address-delete-dialog.html',
-                    controller: 'AddressDeleteController',
+                    templateUrl: 'app/entities/interview/interview-delete-dialog.html',
+                    controller: 'InterviewDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Address', function(Address) {
-                            return Address.get({id : $stateParams.id}).$promise;
+                        entity: ['Interview', function(Interview) {
+                            return Interview.get({id : $stateParams.id}).$promise;
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('address', null, { reload: 'address' });
+                    $state.go('interview', null, { reload: 'interview' });
                 }, function() {
                     $state.go('^');
                 });

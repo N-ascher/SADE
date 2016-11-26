@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "interview",
+            "otherEntityName": "interview",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161125231708",
+    "entityTableName": "comment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}
