@@ -1,18 +1,18 @@
 package br.com.unicamp.sade.web.rest;
 
+import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.domain.User;
+import br.com.unicamp.sade.repository.DeveloperRepository;
 import br.com.unicamp.sade.repository.UserRepository;
+import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.service.DeveloperService;
 import br.com.unicamp.sade.service.MailService;
 import br.com.unicamp.sade.service.UserService;
 import br.com.unicamp.sade.service.dto.DeveloperDTO;
-import br.com.unicamp.sade.web.rest.vm.ManagedUserVM;
-import com.codahale.metrics.annotation.Timed;
-import br.com.unicamp.sade.domain.Developer;
-
-import br.com.unicamp.sade.repository.DeveloperRepository;
 import br.com.unicamp.sade.web.rest.util.HeaderUtil;
 import br.com.unicamp.sade.web.rest.util.PaginationUtil;
+import br.com.unicamp.sade.web.rest.vm.ManagedUserVM;
+import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -158,6 +166,7 @@ public class DeveloperResource {
      */
     @GetMapping("")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
         if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
@@ -193,6 +202,7 @@ public class DeveloperResource {
      */
     @DeleteMapping("/{id}")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
         if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to delete Developer : {}", id);
