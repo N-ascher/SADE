@@ -1,15 +1,15 @@
 package br.com.unicamp.sade.web.rest;
 
 import br.com.unicamp.sade.config.Constants;
-import com.codahale.metrics.annotation.Timed;
 import br.com.unicamp.sade.domain.User;
 import br.com.unicamp.sade.repository.UserRepository;
 import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.service.MailService;
 import br.com.unicamp.sade.service.UserService;
-import br.com.unicamp.sade.web.rest.vm.ManagedUserVM;
 import br.com.unicamp.sade.web.rest.util.HeaderUtil;
 import br.com.unicamp.sade.web.rest.util.PaginationUtil;
+import br.com.unicamp.sade.web.rest.vm.ManagedUserVM;
+import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,13 +18,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -81,9 +89,9 @@ public class UserResource {
      */
     @PostMapping("/users")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<?> createUser(@RequestBody ManagedUserVM managedUserVM, HttpServletRequest request) throws URISyntaxException {
         log.debug("REST request to save User : {}", managedUserVM);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 
         //Lowercase the user login before comparing with database
         if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
@@ -119,9 +127,9 @@ public class UserResource {
      */
     @PutMapping("/users")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<ManagedUserVM> updateUser(@RequestBody ManagedUserVM managedUserVM) {
         log.debug("REST request to update User : {}", managedUserVM);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Optional<User> existingUser = userRepository.findOneByEmail(managedUserVM.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userManagement", "emailexists", "E-mail already in use")).body(null);
@@ -182,8 +190,8 @@ public class UserResource {
      */
     @DeleteMapping("/users/{login:" + Constants.LOGIN_REGEX + "}")
     @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteUser(@PathVariable String login) {
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
