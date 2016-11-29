@@ -150,6 +150,7 @@ public class UserResource {
     @Timed
     public ResponseEntity<List<ManagedUserVM>> getAllUsers(Pageable pageable)
         throws URISyntaxException {
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Page<User> page = userRepository.findAllWithAuthorities(pageable);
         List<ManagedUserVM> managedUserVMs = page.getContent().stream()
             .map(ManagedUserVM::new)

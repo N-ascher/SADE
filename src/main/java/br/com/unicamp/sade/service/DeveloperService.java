@@ -5,6 +5,8 @@ import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.domain.Technology;
 import br.com.unicamp.sade.domain.User;
 import br.com.unicamp.sade.repository.DeveloperRepository;
+import br.com.unicamp.sade.security.SecurityUtils;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,34 @@ public class DeveloperService {
         Developer created = developerRepository.save(developer);
         log.debug("Created information: Developer={}", created);
         return created;
+    }
+
+    public void updateDeveloper(Long id,
+                                     String phoneNumber,
+                                     String mobileNumber,
+                                     String document,
+                                     String linkedIn,
+                                     String gitHub,
+                                     Integer availability,
+                                     String prospectedBy,
+                                     Address address,
+                                     Set<Technology> technologies) {
+
+        Optional.of(developerRepository.findOne(id)).ifPresent(
+            developer ->{
+                developer.setPhoneNumber(phoneNumber);
+                developer.setMobileNumber(mobileNumber);
+                developer.setDocument(document);
+                developer.setLinkedIn(linkedIn);
+                developer.setGitHub(gitHub);
+                developer.setAvailability(availability);
+                developer.setProspectedBy(prospectedBy);
+                developer.setAddress(address);
+                developer.setTechnologies(technologies);
+                log.debug("Changed Information for Developer: {}", developer);
+            }
+        );
+
     }
 
 }

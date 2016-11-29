@@ -39,7 +39,7 @@ import java.util.Optional;
 public class DeveloperResource {
 
     private final Logger log = LoggerFactory.getLogger(DeveloperResource.class);
-        
+
     @Inject
     private DeveloperRepository developerRepository;
 
@@ -103,7 +103,7 @@ public class DeveloperResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new developer, or with status 400 (Bad Request) if the developer has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("")
+    @PostMapping("/developers")
     @Timed
     public ResponseEntity<Developer> createDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to save Developer : {}", developer);
@@ -125,17 +125,28 @@ public class DeveloperResource {
      * or with status 500 (Internal Server Error) if the developer couldnt be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("")
+    @PutMapping("/developers")
     @Timed
     public ResponseEntity<Developer> updateDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to update Developer : {}", developer);
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         if (developer.getId() == null) {
-            return createDeveloper(developer);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("developerManagement", "noID", "The developer does not exist.")).body(null);
         }
-        Developer result = developerRepository.save(developer);
+        developerService.updateDeveloper(developer.getId(),
+            developer.getPhoneNumber(),
+            developer.getMobileNumber(),
+            developer.getDocument(),
+            developer.getLinkedIn(),
+            developer.getGitHub(),
+            developer.getAvailability(),
+            developer.getProspectedBy(),
+            developer.getAddress(),
+            developer.getTechnologies()
+        );
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("developer", developer.getId().toString()))
-            .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("Developer has been updated", developer.getId().toString()))
+            .body(developer);
     }
 
     /**
@@ -145,10 +156,11 @@ public class DeveloperResource {
      * @return the ResponseEntity with status 200 (OK) and the list of developers in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("")
+    @GetMapping("/developers")
     @Timed
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to get a page of Developers");
         Page<Developer> page = developerRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/developers");
@@ -161,7 +173,7 @@ public class DeveloperResource {
      * @param id the id of the developer to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the developer, or with status 404 (Not Found)
      */
-    @GetMapping("/{id}")
+    @GetMapping("/developers/{id}")
     @Timed
     public ResponseEntity<Developer> getDeveloper(@PathVariable Long id) {
         log.debug("REST request to get Developer : {}", id);
@@ -179,9 +191,10 @@ public class DeveloperResource {
      * @param id the id of the developer to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/developers/{id}")
     @Timed
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to delete Developer : {}", id);
         developerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("developer", id.toString())).build();
