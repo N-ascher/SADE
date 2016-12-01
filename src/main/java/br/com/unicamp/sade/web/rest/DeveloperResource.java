@@ -103,7 +103,7 @@ public class DeveloperResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new developer, or with status 400 (Bad Request) if the developer has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/developers")
+    @PostMapping("")
     @Timed
     public ResponseEntity<Developer> createDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to save Developer : {}", developer);
@@ -125,7 +125,7 @@ public class DeveloperResource {
      * or with status 500 (Internal Server Error) if the developer couldnt be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/developers")
+    @PutMapping("")
     @Timed
     public ResponseEntity<Developer> updateDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to update Developer : {}", developer);
@@ -156,7 +156,7 @@ public class DeveloperResource {
      * @return the ResponseEntity with status 200 (OK) and the list of developers in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("/developers")
+    @GetMapping("")
     @Timed
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
@@ -173,7 +173,7 @@ public class DeveloperResource {
      * @param id the id of the developer to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the developer, or with status 404 (Not Found)
      */
-    @GetMapping("/developers/{id}")
+    @GetMapping("/{id}")
     @Timed
     public ResponseEntity<Developer> getDeveloper(@PathVariable Long id) {
         log.debug("REST request to get Developer : {}", id);
@@ -191,7 +191,7 @@ public class DeveloperResource {
      * @param id the id of the developer to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/developers/{id}")
+    @DeleteMapping("/{id}")
     @Timed
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
         if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
