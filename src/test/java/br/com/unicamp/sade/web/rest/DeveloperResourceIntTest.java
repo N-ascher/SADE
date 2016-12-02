@@ -3,6 +3,7 @@ package br.com.unicamp.sade.web.rest;
 import br.com.unicamp.sade.SadeApp;
 import br.com.unicamp.sade.domain.Developer;
 import br.com.unicamp.sade.repository.DeveloperRepository;
+import br.com.unicamp.sade.service.DeveloperService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -66,6 +67,9 @@ public class DeveloperResourceIntTest {
     private DeveloperRepository developerRepository;
 
     @Inject
+    private DeveloperService developerService;
+
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Inject
@@ -83,6 +87,7 @@ public class DeveloperResourceIntTest {
         MockitoAnnotations.initMocks(this);
         DeveloperResource developerResource = new DeveloperResource();
         ReflectionTestUtils.setField(developerResource, "developerRepository", developerRepository);
+        ReflectionTestUtils.setField(developerResource, "developerService", developerService);
         this.restDeveloperMockMvc = MockMvcBuilders.standaloneSetup(developerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();

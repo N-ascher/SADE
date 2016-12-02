@@ -135,9 +135,9 @@ public class DeveloperResource {
      */
     @PutMapping("")
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<Developer> updateDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to update Developer : {}", developer);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         if (developer.getId() == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("developerManagement", "noID", "The developer does not exist.")).body(null);
         }
@@ -169,7 +169,6 @@ public class DeveloperResource {
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to get a page of Developers");
         Page<Developer> page = developerRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/developers");
@@ -204,7 +203,6 @@ public class DeveloperResource {
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         log.debug("REST request to delete Developer : {}", id);
         developerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("developer", id.toString())).build();
