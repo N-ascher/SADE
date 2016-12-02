@@ -219,7 +219,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public boolean isAdmin() {
         User user = getUserWithAuthorities();
-        return user != null &&
+        return user != null && user.getAuthorities() != null &&
             user.getAuthorities().contains(Authority.valueOf(AuthoritiesConstants.ADMIN));
     }
 

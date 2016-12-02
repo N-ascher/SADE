@@ -166,10 +166,10 @@ public class DeveloperResource {
      */
     @GetMapping("")
     @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Developers");
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Page<Developer> page = developerRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/developers");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
@@ -201,9 +201,9 @@ public class DeveloperResource {
      */
     @DeleteMapping("/{id}")
     @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
         log.debug("REST request to delete Developer : {}", id);
+        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         developerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("developer", id.toString())).build();
     }
