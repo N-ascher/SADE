@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/interview',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['CONPEC_USER'],
                 pageTitle: 'sadeApp.interview.home.title'
             },
             views: {
@@ -35,7 +35,7 @@
             parent: 'entity',
             url: '/interview/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: ['CONPEC_USER'],
                 pageTitle: 'sadeApp.interview.detail.title'
             },
             views: {
@@ -67,7 +67,7 @@
             parent: 'interview-detail',
             url: '/detail/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -92,7 +92,7 @@
             parent: 'interview',
             url: '/new',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -120,7 +120,7 @@
             parent: 'interview',
             url: '/{id}/edit',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
@@ -145,7 +145,7 @@
             parent: 'interview',
             url: '/{id}/delete',
             data: {
-                authorities: ['ROLE_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
