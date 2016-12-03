@@ -12,6 +12,8 @@
 
 
 spring:
+    profiles:
+        active: no-liquibase
     devtools:
         restart:
             enabled: false
