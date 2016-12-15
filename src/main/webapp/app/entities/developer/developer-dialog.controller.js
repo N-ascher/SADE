@@ -5,23 +5,13 @@
         .module('sadeApp')
         .controller('DeveloperDialogController', DeveloperDialogController);
 
-    DeveloperDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Developer', 'Address', 'Technology'];
+    DeveloperDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Developer', 'Technology'];
 
-    function DeveloperDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Developer, Address, Technology) {
+    function DeveloperDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Developer, Technology) {
         var vm = this;
-
         vm.developer = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.addresses = Address.query({filter: 'developer-is-null'});
-        $q.all([vm.developer.$promise, vm.addresses.$promise]).then(function() {
-            if (!vm.developer.address || !vm.developer.address.id) {
-                return $q.reject();
-            }
-            return Address.get({id : vm.developer.address.id}).$promise;
-        }).then(function(address) {
-            vm.addresses.push(address);
-        });
         vm.technologies = Technology.query();
 
         $timeout(function (){
