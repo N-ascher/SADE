@@ -20,7 +20,7 @@
                 "tracker": "Rastreamento de usuário",
                 "audits": "Auditorias",
                 "developer": "Gerenciamento de desenvolvedores",
-                "predefined_questions": "Gerenciamento Perguntas de Entrevista",
+                "predefined_questions": "Gerenciamento perguntas de entrevista",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "system": {

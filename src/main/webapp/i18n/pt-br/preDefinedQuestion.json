@@ -2,21 +2,21 @@
     "sadeApp": {
         "preDefinedQuestion" : {
             "home": {
-                "title": "Pre Defined Questions",
-                "createLabel": "Criar novo Pre Defined Question",
-                "createOrEditLabel": "Criar ou editar Pre Defined Question",
-                "search": "Pesquisar por Pre Defined Question"
+                "title": "Perguntas de Entrevista Pré-definidas",
+                "createLabel": "Criar nova pergunta",
+                "createOrEditLabel": "Criar ou editar pergunta",
+                "search": "Pesquisar por pergunta"
             },
-            "created": "Um novo Pre Defined Question é criado com o identificador {{ param }}",
-            "updated": "Um Pre Defined Question é atualizado com o identificador {{ param }}",
-            "deleted": "Um Pre Defined Question é deletado com o identificador {{ param }}",
+            "created": "Uma nova pergunta para entrevistas foi criada com sucesso",
+            "updated": "A pergunta foi atualizada com sucesso",
+            "deleted": "A pergunta foi deletada com sucesso",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Pre Defined Question {{ id }}?"
+                "question": "Tem certeza de que deseja excluir essa pergunta?"
             },
             "detail": {
-                "title": "Pre Defined Question"
+                "title": "Perguntas de Entrevista Pré-definidas"
             },
-            "title": "Title"
+            "title": "Perguntas de Entrevista Pré-definidas"
         }
     }
 }

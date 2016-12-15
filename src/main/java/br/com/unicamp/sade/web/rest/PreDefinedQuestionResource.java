@@ -1,5 +1,6 @@
 package br.com.unicamp.sade.web.rest;
 
+import br.com.unicamp.sade.security.AuthoritiesConstants;
 import com.codahale.metrics.annotation.Timed;
 import br.com.unicamp.sade.domain.PreDefinedQuestion;
 
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -42,6 +44,7 @@ public class PreDefinedQuestionResource {
      */
     @PostMapping("/pre-defined-questions")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<PreDefinedQuestion> createPreDefinedQuestion(@RequestBody PreDefinedQuestion preDefinedQuestion) throws URISyntaxException {
         log.debug("REST request to save PreDefinedQuestion : {}", preDefinedQuestion);
         if (preDefinedQuestion.getId() != null) {
@@ -64,6 +67,7 @@ public class PreDefinedQuestionResource {
      */
     @PutMapping("/pre-defined-questions")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<PreDefinedQuestion> updatePreDefinedQuestion(@RequestBody PreDefinedQuestion preDefinedQuestion) throws URISyntaxException {
         log.debug("REST request to update PreDefinedQuestion : {}", preDefinedQuestion);
         if (preDefinedQuestion.getId() == null) {
@@ -84,6 +88,7 @@ public class PreDefinedQuestionResource {
      */
     @GetMapping("/pre-defined-questions")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<List<PreDefinedQuestion>> getAllPreDefinedQuestions(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of PreDefinedQuestions");
@@ -100,6 +105,7 @@ public class PreDefinedQuestionResource {
      */
     @GetMapping("/pre-defined-questions/{id}")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<PreDefinedQuestion> getPreDefinedQuestion(@PathVariable Long id) {
         log.debug("REST request to get PreDefinedQuestion : {}", id);
         PreDefinedQuestion preDefinedQuestion = preDefinedQuestionRepository.findOne(id);
@@ -118,6 +124,7 @@ public class PreDefinedQuestionResource {
      */
     @DeleteMapping("/pre-defined-questions/{id}")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<Void> deletePreDefinedQuestion(@PathVariable Long id) {
         log.debug("REST request to delete PreDefinedQuestion : {}", id);
         preDefinedQuestionRepository.delete(id);
