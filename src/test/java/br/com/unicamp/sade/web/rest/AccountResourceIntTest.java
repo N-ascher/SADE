@@ -106,7 +106,7 @@ public class AccountResourceIntTest {
     public void testGetExistingAccount() throws Exception {
         Set<Authority> authorities = new HashSet<>();
         Authority authority = new Authority();
-        authority.setName(AuthoritiesConstants.ADMIN);
+        authority.setName(AuthoritiesConstants.CONPEC_USER);
         authorities.add(authority);
 
         User user = new User();
@@ -125,7 +125,7 @@ public class AccountResourceIntTest {
                 .andExpect(jsonPath("$.firstName").value("john"))
                 .andExpect(jsonPath("$.lastName").value("doe"))
                 .andExpect(jsonPath("$.email").value("john.doe@jhipter.com"))
-                .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
+                .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.CONPEC_USER));
     }
 
     @Test
@@ -149,7 +149,7 @@ public class AccountResourceIntTest {
             "joe@example.com",      // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
@@ -178,7 +178,7 @@ public class AccountResourceIntTest {
             "funky@example.com",    // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
@@ -207,7 +207,7 @@ public class AccountResourceIntTest {
             "invalid",          // e-mail <-- invalid
             true,               // activated
             "pt-br",               // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
@@ -236,7 +236,7 @@ public class AccountResourceIntTest {
             "bob@example.com",  // e-mail
             true,               // activated
             "pt-br",               // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
@@ -266,7 +266,7 @@ public class AccountResourceIntTest {
             "alice@example.com",    // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
@@ -308,7 +308,7 @@ public class AccountResourceIntTest {
             "john@example.com",     // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER)),
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
@@ -349,7 +349,7 @@ public class AccountResourceIntTest {
             "badguy@example.com",   // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.ADMIN)),
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.CONPEC_USER)),
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
@@ -365,7 +365,7 @@ public class AccountResourceIntTest {
         Optional<User> userDup = userRepository.findOneByLogin("badguy");
         assertThat(userDup.isPresent()).isTrue();
         assertThat(userDup.get().getAuthorities()).hasSize(1)
-            .containsExactly(authorityRepository.findOne(AuthoritiesConstants.USER));
+            .containsExactly(authorityRepository.findOne(AuthoritiesConstants.REGISTERED_USER));
     }
 
     @Test
@@ -378,7 +378,7 @@ public class AccountResourceIntTest {
             "funky@example.com",    // e-mail
             true,                   // activated
             "pt-br",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER))
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.REGISTERED_USER))
         );
 
         restUserMockMvc.perform(

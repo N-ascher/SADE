@@ -3,6 +3,7 @@ package br.com.unicamp.sade.web.rest;
 import br.com.unicamp.sade.config.Constants;
 import br.com.unicamp.sade.domain.User;
 import br.com.unicamp.sade.repository.UserRepository;
+import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.service.MailService;
 import br.com.unicamp.sade.service.UserService;
 import br.com.unicamp.sade.web.rest.util.HeaderUtil;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,9 +89,9 @@ public class UserResource {
      */
     @PostMapping("/users")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<?> createUser(@RequestBody ManagedUserVM managedUserVM, HttpServletRequest request) throws URISyntaxException {
         log.debug("REST request to save User : {}", managedUserVM);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         //Lowercase the user login before comparing with database
         if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
             return ResponseEntity.badRequest()
@@ -124,9 +126,9 @@ public class UserResource {
      */
     @PutMapping("/users")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<ManagedUserVM> updateUser(@RequestBody ManagedUserVM managedUserVM) {
         log.debug("REST request to update User : {}", managedUserVM);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Optional<User> existingUser = userRepository.findOneByEmail(managedUserVM.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userManagement", "emailexists", "E-mail already in use")).body(null);
@@ -153,9 +155,9 @@ public class UserResource {
      */
     @GetMapping("/users")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<List<ManagedUserVM>> getAllUsers(Pageable pageable)
         throws URISyntaxException {
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Page<User> page = userRepository.findAllWithAuthorities(pageable);
         List<ManagedUserVM> managedUserVMs = page.getContent().stream()
             .map(ManagedUserVM::new)
@@ -188,9 +190,9 @@ public class UserResource {
      */
     @DeleteMapping("/users/{login:" + Constants.LOGIN_REGEX + "}")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<Void> deleteUser(@PathVariable String login) {
         log.debug("REST request to delete User: {}", login);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }

@@ -92,7 +92,7 @@ public class UserService {
     public User createUser(String login, String password, String firstName, String lastName, String email,
                            String langKey) {
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authority = authorityRepository.findOne(AuthoritiesConstants.REGISTERED_USER);
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -220,7 +220,7 @@ public class UserService {
     public boolean isAdmin() {
         User user = getUserWithAuthorities();
         return user != null && user.getAuthorities() != null &&
-            user.getAuthorities().contains(Authority.valueOf(AuthoritiesConstants.ADMIN));
+            user.getAuthorities().contains(Authority.valueOf(AuthoritiesConstants.CONPEC_USER));
     }
 
     /**

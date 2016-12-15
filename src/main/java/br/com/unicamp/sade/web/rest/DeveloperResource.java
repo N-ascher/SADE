@@ -21,7 +21,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -135,7 +135,7 @@ public class DeveloperResource {
      */
     @PutMapping("")
     @Timed
-    @Secured(AuthoritiesConstants.USER)
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.REGISTERED_USER + "')")
     public ResponseEntity<Developer> updateDeveloper(@RequestBody Developer developer) throws URISyntaxException {
         log.debug("REST request to update Developer : {}", developer);
         if (developer.getId() == null) {
@@ -166,10 +166,10 @@ public class DeveloperResource {
      */
     @GetMapping("")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<List<Developer>> getAllDevelopers(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Developers");
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         Page<Developer> page = developerRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/developers");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
@@ -183,6 +183,7 @@ public class DeveloperResource {
      */
     @GetMapping("/{id}")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.REGISTERED_USER + "')")
     public ResponseEntity<Developer> getDeveloper(@PathVariable Long id) {
         log.debug("REST request to get Developer : {}", id);
         Developer developer = developerRepository.findOne(id);
@@ -201,9 +202,9 @@ public class DeveloperResource {
      */
     @DeleteMapping("/{id}")
     @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<Void> deleteDeveloper(@PathVariable Long id) {
         log.debug("REST request to delete Developer : {}", id);
-        if (!userService.isAdmin()) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         developerRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("developer", id.toString())).build();
     }

@@ -5,9 +5,9 @@ package br.com.unicamp.sade.security;
  */
 public final class AuthoritiesConstants {
 
-    public static final String ADMIN = "CONPEC_USER";
+    public static final String CONPEC_USER = "CONPEC_USER";
 
-    public static final String USER = "REGISTERED_USER";
+    public static final String REGISTERED_USER = "REGISTERED_USER";
 
     public static final String ANONYMOUS = "ROLE_ANONYMOUS";
 
