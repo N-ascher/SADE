@@ -19,7 +19,7 @@ entity InterviewQuestion {
 }
 
 relationship OneToOne {
-	Interview{interviewerId} to User
+	Interview{interviewer} to User
 }
 
 relationship OneToMany {
@@ -27,10 +27,10 @@ relationship OneToMany {
 }
 
 relationship ManyToOne {
-	InterviewQuestion{questionId} to PreDefinedQuestion
+	InterviewQuestion{question} to PreDefinedQuestion
 }
 
-relationship ManyToOne {
+relationship OneToMany {
 	Interview{questions} to InterviewQuestion
 }
 

@@ -8,7 +8,7 @@
     -->
     <changeSet id="20161125231710-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="question_id_id"
+        <addForeignKeyConstraint baseColumnNames="question_id"
                                  baseTableName="interview_question"
                                  constraintName="fk_interview_question_question_id_id"
                                  referencedColumnNames="id"

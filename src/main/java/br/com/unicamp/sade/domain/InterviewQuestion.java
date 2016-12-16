@@ -1,6 +1,8 @@
 package br.com.unicamp.sade.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,7 +27,12 @@ public class InterviewQuestion implements Serializable {
     private String response;
 
     @ManyToOne
-    private PreDefinedQuestion questionId;
+    @JsonIgnore
+    private PreDefinedQuestion question;
+
+    @ManyToOne
+    @JsonIgnore
+    private Interview interview;
 
     public Long getId() {
         return id;
@@ -61,18 +68,32 @@ public class InterviewQuestion implements Serializable {
         this.response = response;
     }
 
-    public PreDefinedQuestion getQuestionId() {
-        return questionId;
+    public PreDefinedQuestion getQuestion() {
+        return question;
     }
 
-    public InterviewQuestion questionId(PreDefinedQuestion preDefinedQuestion) {
-        this.questionId = preDefinedQuestion;
+    public InterviewQuestion question(PreDefinedQuestion preDefinedQuestion) {
+        this.question = preDefinedQuestion;
         return this;
     }
 
-    public void setQuestionId(PreDefinedQuestion preDefinedQuestion) {
-        this.questionId = preDefinedQuestion;
+    public void setInterview(Interview interview) {
+        this.interview = interview;
     }
+
+    public Interview getInterview() {
+        return interview;
+    }
+
+    public InterviewQuestion interview(Interview interview) {
+        this.interview = interview;
+        return this;
+    }
+
+    public void setQuestion(PreDefinedQuestion preDefinedQuestion) {
+        this.question = preDefinedQuestion;
+    }
+
 
     @Override
     public boolean equals(Object o) {

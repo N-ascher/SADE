@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20161216011635-1" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/addresses.csv"
+                  separator=";"
+                  tableName="address"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/developers.csv"
+                  separator=";"
+                  tableName="developer"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/developer-skills.csv"
+                  separator=";"
+                  tableName="technology"/>
+    </changeSet>
+</databaseChangeLog>

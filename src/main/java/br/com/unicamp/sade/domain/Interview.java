@@ -1,12 +1,20 @@
 package br.com.unicamp.sade.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Interview.
@@ -26,14 +34,13 @@ public class Interview implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private User interviewerId;
+    private User interviewer;
 
-    @OneToMany(mappedBy = "interview")
-    @JsonIgnore
+    @OneToMany(mappedBy = "interview", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
 
-    @ManyToOne
-    private InterviewQuestion questions;
+    @OneToMany(mappedBy = "interview", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+    private Set<InterviewQuestion> questions;
 
     public Long getId() {
         return id;
@@ -56,17 +63,17 @@ public class Interview implements Serializable {
         this.hourValue = hourValue;
     }
 
-    public User getInterviewerId() {
-        return interviewerId;
+    public User getInterviewer() {
+        return interviewer;
     }
 
     public Interview interviewerId(User user) {
-        this.interviewerId = user;
+        this.interviewer = user;
         return this;
     }
 
-    public void setInterviewerId(User user) {
-        this.interviewerId = user;
+    public void setInterviewer(User user) {
+        this.interviewer = user;
     }
 
     public Set<Comment> getComments() {
@@ -94,17 +101,29 @@ public class Interview implements Serializable {
         this.comments = comments;
     }
 
-    public InterviewQuestion getQuestions() {
+    public Set<InterviewQuestion> getQuestions() {
         return questions;
     }
 
-    public Interview questions(InterviewQuestion interviewQuestion) {
+    public Interview questions(Set<InterviewQuestion> interviewQuestion) {
         this.questions = interviewQuestion;
         return this;
     }
 
-    public void setQuestions(InterviewQuestion interviewQuestion) {
+    public void setQuestions(Set<InterviewQuestion> interviewQuestion) {
         this.questions = interviewQuestion;
+    }
+
+    public Interview addInterviewQuestion(InterviewQuestion interviewQuestion) {
+        questions.add(interviewQuestion);
+        interviewQuestion.setInterview(this);
+        return this;
+    }
+
+    public Interview removeInterviewQuestion(InterviewQuestion interviewQuestion) {
+        questions.remove(interviewQuestion);
+        interviewQuestion.setInterview(null);
+        return this;
     }
 
     @Override

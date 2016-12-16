@@ -24,11 +24,8 @@
             <column name="hour_value" type="integer">
                 <constraints nullable="true" />
             </column>
-                        <column name="interviewer_id_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>
-            <column name="questions_id" type="bigint">
-                <constraints nullable="true" />
+            <column name="interviewer_id" type="bigint">
+                <constraints unique="true" nullable="true"/>
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
