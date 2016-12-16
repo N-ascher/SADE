@@ -88,34 +88,6 @@
                 });
             }]
         })
-        .state('interview.new', {
-            parent: 'interview',
-            url: '/new',
-            data: {
-                authorities: ['CONPEC_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/interview/interview-dialog.html',
-                    controller: 'InterviewDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                hourValue: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('interview', null, { reload: 'interview' });
-                }, function() {
-                    $state.go('interview');
-                });
-            }]
-        })
         .state('interview.edit', {
             parent: 'interview',
             url: '/{id}/edit',

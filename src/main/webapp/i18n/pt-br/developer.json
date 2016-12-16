@@ -13,6 +13,11 @@
                 "interview": "Entrevista",
                 "review": "Review"
             },
+            "actions": {
+                "createInterview": "Adicionar entrevista",
+                "editInterview": "Editar",
+                "emptyInterview": "Nenhuma entrevista foi feita com esse(a) desenvolvedor(a) ainda! Faça uma entrevista com ele(a) e adicione os dados aqui."
+            },
             "created": "Um novo Desenvolvedor é criado com o identificador {{ param }}",
             "updated": "Um Desenvolvedor é atualizado com o identificador {{ param }}",
             "deleted": "Um Desenvolvedor é deletado com o identificador {{ param }}",
@@ -21,6 +26,16 @@
             },
             "detail": {
                 "title": "Desenvolvedor"
+            },
+            "interview": {
+                "hourValue": "Valor/Hora (em R$)",
+                "createOrEditLabel": "Criar ou editar Entrevista",
+                "comment": "Comentário",
+                "addComment": "Adicione comentários sobre o que achou relevante na entrevista",
+                "tabs": {
+                    "basicData": "Dados Básicos",
+                    "comments": "Comentários"
+                }
             },
             "phoneNumber": "Telefone",
             "mobileNumber": "Celular",

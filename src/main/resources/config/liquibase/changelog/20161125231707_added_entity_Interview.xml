@@ -25,6 +25,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="interviewer_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="developer_id" type="bigint">
                 <constraints unique="true" nullable="true"/>
             </column>
 

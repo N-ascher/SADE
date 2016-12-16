@@ -1,5 +1,7 @@
 package br.com.unicamp.sade.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,8 +35,13 @@ public class Interview implements Serializable {
     private Integer hourValue;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private User interviewer;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    @JsonIgnoreProperties({"interview"})
+    private Developer developer;
 
     @OneToMany(mappedBy = "interview", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
@@ -125,6 +132,21 @@ public class Interview implements Serializable {
         interviewQuestion.setInterview(null);
         return this;
     }
+
+    public Developer getDeveloper() {
+        return developer;
+    }
+
+    public Interview developer(Developer developer) {
+        this.developer = developer;
+        return this;
+    }
+
+    public void setDeveloper(Developer developer) {
+        this.developer = developer;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

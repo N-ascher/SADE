@@ -64,30 +64,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-2 text-center" ng-hide="true">
-                        <figure>
-                            <img src="content/images/profile.png" alt="" class="img-circle img-responsive">
-                            <figcaption class="ratings" ng-hide="true">
-                                <p>Ratings
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star"></span>
-                                    </a>
-                                    <a href="#">
-                                        <span class="fa fa-star-o"></span>
-                                    </a>
-                                </p>
-                            </figcaption>
-                        </figure>
-                    </div>
                 </div>
                 <div class="col-xs-12 text-center">
                     <div class="col-md-12">
@@ -99,9 +75,6 @@
                             <li id="interview" class="{{vm.tabClass('interview')}}"
                                 ng-click="vm.changeTab('interview')">
                                 <a data-translate="sadeApp.developer.tabs.interview" has-authority="ROLE_CONPEC">Interview</a>
-                            </li>
-                            <li id="review" class="{{vm.tabClass('review')}}" ng-click="vm.changeTab('review')">
-                                <a data-translate="sadeApp.developer.tabs.review" has-authority="ROLE_CONPEC">Review</a>
                             </li>
                         </ul>
                         <br/>
@@ -142,9 +115,55 @@
                 </div>
 
                 <div ng-show="vm.currentTab == 'interview'" class="row">
-                </div>
+                    <div ng-if="!vm.developer.interview" class="col-xs-10 col-xs-offset-1">
+                        <div class="row text-center">
+                            <p data-translate="sadeApp.developer.actions.emptyInterview">There's no registered interview</p>
+                            <button class="btn btn-primary" ui-sref="developer-detail.interview-new" >
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span  data-translate="sadeApp.developer.actions.createInterview">
+                                    Create new Interview
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-if="vm.developer.interview" class="col-xs-10 col-xs-offset-1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <strong>
+                                        <span data-translate="sadeApp.developer.interview.hourValue">Hour Value</span>:
+                                    </strong>
+                                    <span>{{vm.developer.interview.hourValue}}</span>
+                                </p>
 
-                <div ng-show="vm.currentTab == 'review'" class="row">
+                                <p ng-repeat="question in vm.developer.interview.questions track by question.questionTitle">
+                                    <strong>
+                                        <span>{{question.questionTitle}}</span>
+                                    </strong>
+                                    <br/>
+                                    <span>{{question.response}}</span>
+                                </p>
+
+                                <p>
+                                    <strong>
+                                        <span data-translate="sadeApp.developer.interview.tabs.comments">Comments</span>
+                                    </strong>
+                                </p>
+
+                                <p ng-repeat="comment in vm.developer.interview.comments track by comment.content">
+                                    <span>{{comment.content}}</span>
+                                </p>
+
+                                <button class="btn btn-primary"
+                                        ui-sref="developer-detail.interview-edit({interviewId: vm.developer.interview.id})" >
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                <span  data-translate="sadeApp.developer.actions.editInterview">
+                                    Edit Interview
+                                </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,10 +175,5 @@
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="developer-detail.edit({id:vm.developer.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>
 </div>

@@ -46,10 +46,13 @@ public class MailService {
     private SpringTemplateEngine templateEngine;
 
     @Async
-    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml, boolean signed, String baseUrl) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
             isMultipart, isHtml, to, subject, content);
 
+        if (isHtml && signed) {
+            content += "<img src=\" " + baseUrl + "/content/images/conpec_signature.png\" />";
+        }
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
@@ -67,38 +70,35 @@ public class MailService {
 
     @Async
     public void sendActivationEmail(User user, String baseUrl) {
-        log.debug("Sending activation e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("activationEmail", context);
-        String subject = messageSource.getMessage("email.activation.title", null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        final String activationUrl = baseUrl + "/#/activate?key=" + user.getActivationKey();
+        String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
+                "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Ative seu cadastro no SADE";
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
     public void sendCreationEmail(User user, String baseUrl) {
-        log.debug("Sending creation e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("creationEmail", context);
-        String subject = messageSource.getMessage("email.activation.title", null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        final String activationUrl = baseUrl + "/#/activate?key=" + user.getActivationKey();
+        String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
+                "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Ative seu cadastro no SADE";
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
     public void sendPasswordResetMail(User user, String baseUrl) {
-        log.debug("Sending password reset e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("passwordResetEmail", context);
-        String subject = messageSource.getMessage("email.reset.title", null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        final String activationUrl = baseUrl + "/#/reset/finish?key=" + user.getResetKey();
+        String content = String.format(user.getFirstName() + ",<br>" +
+                "Clique no <a href=\"%s\">aqui</a> para resetar sua senha! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Resete sua senha no SADE";
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
@@ -110,6 +110,6 @@ public class MailService {
         context.setVariable("provider", StringUtils.capitalize(provider));
         String content = templateEngine.process("socialRegistrationValidationEmail", context);
         String subject = messageSource.getMessage("email.social.registration.title", null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true, true, "");
     }
 }

@@ -1,6 +1,8 @@
 package br.com.unicamp.sade.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -22,6 +24,7 @@ public class Comment implements Serializable {
     private String content;
 
     @ManyToOne
+    @JsonIgnore
     private Interview interview;
 
     public Long getId() {
