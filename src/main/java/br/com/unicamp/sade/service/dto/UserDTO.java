@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
  */
 public class UserDTO {
 
+    Long developerId;
+
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 100)
     private String login;
@@ -45,6 +47,8 @@ public class UserDTO {
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
+        if(user.getDeveloperId() != null)
+            this.developerId = user.getDeveloperId();
     }
 
     public UserDTO(String login, String firstName, String lastName,
@@ -83,20 +87,37 @@ public class UserDTO {
         return langKey;
     }
 
+    public Long getDeveloperId() {
+        return developerId;
+    }
+
     public Set<String> getAuthorities() {
         return authorities;
     }
 
     @Override
     public String toString() {
-        return "UserDTO{" +
-            "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", email='" + email + '\'' +
-            ", activated=" + activated +
-            ", langKey='" + langKey + '\'' +
-            ", authorities=" + authorities +
-            "}";
+        if(developerId == null)
+            return "UserDTO{" +
+                "login='" + login + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", activated=" + activated +
+                ", langKey='" + langKey + '\'' +
+                ", authorities=" + authorities +
+                "}";
+        else
+            return "UserDTO{" +
+                "developerId = " + developerId +
+                "login='" + login + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", activated=" + activated +
+                ", langKey='" + langKey + '\'' +
+                ", authorities=" + authorities +
+                "}";
+
     }
 }

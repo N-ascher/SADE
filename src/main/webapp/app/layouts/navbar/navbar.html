@@ -38,6 +38,14 @@
                                 <span data-translate="global.menu.account.settings">Settings</span>
                             </a>
                         </li>
+
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="developer-detail({id: vm.developerId})" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;
+                                <span>My Information</span>
+                            </a>
+                        </li>
+
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a ui-sref="password" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-lock"></span>&nbsp;
