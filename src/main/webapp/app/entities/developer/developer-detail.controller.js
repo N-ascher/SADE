@@ -13,9 +13,24 @@
         vm.developer = entity;
         vm.previousState = previousState.name;
 
+        vm.currentTab = 'experience';
+        vm.tabClass = tabClass;
+        vm.changeTab = changeTab;
+
         var unsubscribe = $rootScope.$on('sadeApp:developerUpdate', function(event, result) {
             vm.developer = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        function tabClass(tabName) {
+            if(tabName == vm.currentTab) {
+                return 'active';
+            }
+            return '';
+        }
+
+        function changeTab(tabName) {
+            vm.currentTab = tabName;
+        }
     }
 })();

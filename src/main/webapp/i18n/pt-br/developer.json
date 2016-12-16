@@ -7,6 +7,12 @@
                 "createOrEditLabel": "Criar ou editar Desenvolvedor",
                 "search": "Pesquisar por Desenvolvedor"
             },
+            "tabs": {
+                "basicInformation": "Informações Básicas",
+                "experience": "Experiência",
+                "interview": "Entrevista",
+                "review": "Review"
+            },
             "created": "Um novo Desenvolvedor é criado com o identificador {{ param }}",
             "updated": "Um Desenvolvedor é atualizado com o identificador {{ param }}",
             "deleted": "Um Desenvolvedor é deletado com o identificador {{ param }}",
@@ -19,14 +25,16 @@
             "phoneNumber": "Telefone",
             "mobileNumber": "Celular",
             "document": "CPF",
-            "linkedIn": "Linked In",
-            "gitHub": "Git Hub",
-            "availability": "Disponibilidade (em hrs)",
+            "linkedIn": "LinkedIn",
+            "gitHub": "GitHub",
+            "availability": "Disponibilidade semanal (em horas)",
             "prospectedBy": "Como conheceu a conpec?",
             "address": "Endereço",
             "technologies": "Tecnologias",
             "name": "Nome",
             "user": "Usuário",
+            "email": "E-mail",
+            "skills": "Skills",
             "address" : {
                 "title": "Endereço",
                 "street": "Logradouro",
