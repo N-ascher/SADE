@@ -67,37 +67,34 @@ public class MailService {
 
     @Async
     public void sendActivationEmail(User user, String baseUrl) {
-        log.debug("Sending activation e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("activationEmail", context);
-        String subject = messageSource.getMessage("email.activation.title", null, locale);
+        final String activationUrl = baseUrl + "activate?key=" + user.getActivationKey();
+        String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
+                "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Ative seu cadastro no SADE";
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 
     @Async
     public void sendCreationEmail(User user, String baseUrl) {
-        log.debug("Sending creation e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("creationEmail", context);
-        String subject = messageSource.getMessage("email.activation.title", null, locale);
+        final String activationUrl = baseUrl + "activate?key=" + user.getActivationKey();
+        String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
+                "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Ative seu cadastro no SADE";
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 
     @Async
     public void sendPasswordResetMail(User user, String baseUrl) {
-        log.debug("Sending password reset e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
-        Context context = new Context(locale);
-        context.setVariable(USER, user);
-        context.setVariable(BASE_URL, baseUrl);
-        String content = templateEngine.process("passwordResetEmail", context);
-        String subject = messageSource.getMessage("email.reset.title", null, locale);
+        final String activationUrl = baseUrl + "/reset/finish?key=" + user.getResetKey();
+        String content = String.format(user.getFirstName() + ",<br>" +
+                "Clique no <a href=\"%s\">aqui</a> para resetar sua senha! <br>" +
+                "Ou acesse o link: %s<br>"
+            , activationUrl, activationUrl);
+        String subject = "Resete sua senha no SADE";
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 
