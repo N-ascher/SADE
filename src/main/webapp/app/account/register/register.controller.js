@@ -78,8 +78,10 @@
         }
 
         function addTech() {
-            vm.developer.technologies.push(vm.technology);
-            vm.technology = {};
+            if(vm.technology.name) {
+                vm.developer.technologies.push(vm.technology);
+                vm.technology = {};
+            }
         }
 
         function deleteTech(tech) {

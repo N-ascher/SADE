@@ -98,6 +98,22 @@ public class PreDefinedQuestionResource {
     }
 
     /**
+     * GET  /pre-defined-questions/all : get all the preDefinedQuestions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of preDefinedQuestions in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/pre-defined-questions/all")
+    @Timed
+    @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
+    public ResponseEntity<List<PreDefinedQuestion>> getAllPreDefinedQuestions()
+            throws URISyntaxException {
+        log.debug("REST request to get a page of PreDefinedQuestions");
+        List<PreDefinedQuestion> questions = preDefinedQuestionRepository.findAll();
+        return ResponseEntity.ok(questions);
+    }
+
+    /**
      * GET  /pre-defined-questions/:id : get the "id" preDefinedQuestion.
      *
      * @param id the id of the preDefinedQuestion to retrieve

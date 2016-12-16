@@ -55,7 +55,7 @@
             parent: 'entity',
             url: '/developer/{id}',
             data: {
-                authorities: ['REGISTERED_USER'],
+                authorities: ['CONPEC_USER'],
                 pageTitle: 'sadeApp.developer.detail.title'
             },
             views: {
@@ -83,31 +83,60 @@
                 }]
             }
         })
-        .state('developer-detail.edit', {
+        .state('developer-detail.interview-new', {
             parent: 'developer-detail',
-            url: '/detail/edit',
+            url: '/detail/interview/new',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/developer/developer-dialog.html',
-                    controller: 'DeveloperDialogController',
+                    templateUrl: 'app/entities/developer/interview/interview-dialog.html',
+                    controller: 'InterviewDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Developer', function(Developer) {
-                            return Developer.get({id : $stateParams.id}).$promise;
-                        }]
+                        entity: function () {
+                            return {
+                                hourValue: null,
+                                id: null
+                            };
+                        }
                     }
                 }).result.then(function() {
-                    $state.go('^', {}, { reload: false });
+                    $state.go('^', null, { reload: 'interview' });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
+        .state('developer-detail.interview-edit', {
+                    parent: 'developer-detail',
+                    url: '/detail/interview/edit',
+                    data: {
+                        authorities: ['CONPEC_USER']
+                    },
+                    params: {interviewId: null},
+                    onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                        $uibModal.open({
+                            templateUrl: 'app/entities/developer/interview/interview-dialog.html',
+                            controller: 'InterviewDialogController',
+                            controllerAs: 'vm',
+                            backdrop: 'static',
+                            size: 'lg',
+                            resolve: {
+                                entity: ['Interview', function(Interview) {
+                                    return Interview.get({id : $stateParams.interviewId}).$promise;
+                                }]
+                            }
+                        }).result.then(function() {
+                            $state.go('^', {}, { reload: false });
+                        }, function() {
+                            $state.go('^');
+                        });
+                    }]
+                })
         .state('developer.new', {
             parent: 'developer',
             url: '/new',
@@ -171,7 +200,7 @@
             parent: 'developer',
             url: '/{id}/delete',
             data: {
-                authorities: ['REGISTERED_USER']
+                authorities: ['CONPEC_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({

@@ -27,7 +27,6 @@ public class InterviewQuestion implements Serializable {
     private String response;
 
     @ManyToOne
-    @JsonIgnore
     private PreDefinedQuestion question;
 
     @ManyToOne

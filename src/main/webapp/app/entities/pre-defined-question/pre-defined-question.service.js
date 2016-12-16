@@ -7,7 +7,8 @@
     PreDefinedQuestion.$inject = ['$resource'];
 
     function PreDefinedQuestion ($resource) {
-        var resourceUrl =  'api/pre-defined-questions/:id';
+        var baseUrl = 'api/pre-defined-questions';
+        var resourceUrl =  baseUrl + '/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -20,7 +21,8 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'getAll': { method: 'GET', isArray: true, url: baseUrl + '/all' }
         });
     }
 })();

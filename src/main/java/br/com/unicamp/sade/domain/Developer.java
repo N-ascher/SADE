@@ -65,7 +65,7 @@ public class Developer implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
-    @OneToOne(mappedBy = "developer", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "developer", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Interview interview;
 
     public Long getId() {
