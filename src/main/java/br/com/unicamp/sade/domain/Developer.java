@@ -65,6 +65,9 @@ public class Developer implements Serializable {
     @JoinColumn(unique = true)
     private User user;
 
+    @OneToOne(mappedBy = "developer", fetch = FetchType.EAGER)
+    private Interview interview;
+
     public Long getId() {
         return id;
     }
@@ -208,6 +211,19 @@ public class Developer implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Interview getInterview() {
+        return interview;
+    }
+
+    public Developer interview(Interview interview) {
+        this.interview = interview;
+        return this;
+    }
+
+    public void setInterview(Interview interview) {
+        this.interview = interview;
     }
 
     @Override
