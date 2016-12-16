@@ -67,7 +67,7 @@ public class MailService {
 
     @Async
     public void sendActivationEmail(User user, String baseUrl) {
-        final String activationUrl = baseUrl + "activate?key=" + user.getActivationKey();
+        final String activationUrl = baseUrl + "/#/activate?key=" + user.getActivationKey();
         String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
                 "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
                 "Ou acesse o link: %s<br>"
@@ -78,7 +78,7 @@ public class MailService {
 
     @Async
     public void sendCreationEmail(User user, String baseUrl) {
-        final String activationUrl = baseUrl + "activate?key=" + user.getActivationKey();
+        final String activationUrl = baseUrl + "/#/activate?key=" + user.getActivationKey();
         String content = String.format(user.getFirstName() + ", parabéns pelo cadastro no SADE! <br><br>" +
                 "Clique no <a href=\"%s\">aqui</a> para ativar seu cadastro! <br>" +
                 "Ou acesse o link: %s<br>"
@@ -89,7 +89,7 @@ public class MailService {
 
     @Async
     public void sendPasswordResetMail(User user, String baseUrl) {
-        final String activationUrl = baseUrl + "/reset/finish?key=" + user.getResetKey();
+        final String activationUrl = baseUrl + "/#/reset/finish?key=" + user.getResetKey();
         String content = String.format(user.getFirstName() + ",<br>" +
                 "Clique no <a href=\"%s\">aqui</a> para resetar sua senha! <br>" +
                 "Ou acesse o link: %s<br>"
