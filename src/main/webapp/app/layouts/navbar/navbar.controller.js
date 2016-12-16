@@ -20,6 +20,8 @@
 
         vm.login = login;
         vm.logout = logout;
+        vm.identity = setIdentity();
+        vm.developerId = setDeveloperId();
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
@@ -42,5 +44,27 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
+
+        function setIdentity(){
+            if(vm.isAuthenticated)
+            {
+                return Principal.identity();
+            }
+            else
+            {
+                return null;
+            }
+        }
+        function setDeveloperId(){
+            if(vm.identity != null)
+            {
+                return vm.identity.$$state.value['developerId'];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 })();

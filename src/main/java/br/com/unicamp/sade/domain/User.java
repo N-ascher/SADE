@@ -102,6 +102,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
         return id;
     }
 
+    public Long getDeveloperId()
+    {
+        if(this.developer != null)
+            return this.developer.getId();
+        return null;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
