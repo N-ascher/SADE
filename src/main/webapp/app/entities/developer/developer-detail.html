@@ -73,8 +73,9 @@
                                 <a data-translate="sadeApp.developer.tabs.experience">Experience</a>
                             </li>
                             <li id="interview" class="{{vm.tabClass('interview')}}"
-                                ng-click="vm.changeTab('interview')">
-                                <a data-translate="sadeApp.developer.tabs.interview" has-authority="ROLE_CONPEC">Interview</a>
+                                ng-click="vm.changeTab('interview')" has-authority="CONPEC_USER">
+                                <a data-translate="sadeApp.developer.tabs.interview">
+                                    Interview</a>
                             </li>
                         </ul>
                         <br/>
@@ -114,7 +115,7 @@
                     </div>
                 </div>
 
-                <div ng-show="vm.currentTab == 'interview'" class="row">
+                <div ng-show="vm.currentTab == 'interview'" class="row" has-authority="CONPEC_USER">
                     <div ng-if="!vm.developer.interview" class="col-xs-10 col-xs-offset-1">
                         <div class="row text-center">
                             <p data-translate="sadeApp.developer.actions.emptyInterview">There's no registered interview</p>
@@ -171,9 +172,10 @@
 
     <br/>
 
-    <button type="submit"
+    <button has-authority="CONPEC_USER" type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
+
 </div>

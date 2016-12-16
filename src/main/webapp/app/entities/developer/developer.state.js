@@ -55,7 +55,7 @@
             parent: 'entity',
             url: '/developer/{id}',
             data: {
-                authorities: ['CONPEC_USER'],
+                authorities: ['REGISTERED_USER'],
                 pageTitle: 'sadeApp.developer.detail.title'
             },
             views: {
