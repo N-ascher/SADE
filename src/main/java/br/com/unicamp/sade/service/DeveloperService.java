@@ -79,6 +79,7 @@ public class DeveloperService {
                 developer.setAddress(address);
                 developer.setTechnologies(technologies);
                 log.debug("Changed Information for Developer: {}", developer);
+                developerRepository.save(developer);
             }
         );
 

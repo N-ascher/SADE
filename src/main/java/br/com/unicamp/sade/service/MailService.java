@@ -46,10 +46,13 @@ public class MailService {
     private SpringTemplateEngine templateEngine;
 
     @Async
-    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml, boolean signed, String baseUrl) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
             isMultipart, isHtml, to, subject, content);
 
+        if (isHtml && signed) {
+            content += "<img src=\" " + baseUrl + "/content/images/conpec_signature.png\" />";
+        }
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         try {
@@ -73,7 +76,7 @@ public class MailService {
                 "Ou acesse o link: %s<br>"
             , activationUrl, activationUrl);
         String subject = "Ative seu cadastro no SADE";
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
@@ -84,7 +87,7 @@ public class MailService {
                 "Ou acesse o link: %s<br>"
             , activationUrl, activationUrl);
         String subject = "Ative seu cadastro no SADE";
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
@@ -95,7 +98,7 @@ public class MailService {
                 "Ou acesse o link: %s<br>"
             , activationUrl, activationUrl);
         String subject = "Resete sua senha no SADE";
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true, true, baseUrl);
     }
 
     @Async
@@ -107,6 +110,6 @@ public class MailService {
         context.setVariable("provider", StringUtils.capitalize(provider));
         String content = templateEngine.process("socialRegistrationValidationEmail", context);
         String subject = messageSource.getMessage("email.social.registration.title", null, locale);
-        sendEmail(user.getEmail(), subject, content, false, true);
+        sendEmail(user.getEmail(), subject, content, false, true, true, "");
     }
 }
