@@ -31,7 +31,7 @@
                        ng-model="vm.interview.hourValue"
                 />
             </div>
-            <div ng-repeat="question in vm.interview.questions track by question.questionTitle" class="form-group">
+            <div ng-repeat="question in vm.interview.questions" class="form-group">
                 <label for="field_question{{question.question.id}}">{{question.questionTitle}}</label>
             <textarea class="form-control" id="field_question{{question.question.id}}"
                       name="question{{question.question.id}}"
@@ -76,7 +76,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="comment in vm.interview.comments track by comment.content">
+                    <tr ng-repeat="comment in vm.interview.comments">
                         <td>{{comment.content}}</td>
                         <td class="text-right">
                             <div class="btn-group flex-btn-group-container">

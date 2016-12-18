@@ -56,7 +56,7 @@
             }
         }
         function setDeveloperId(){
-            if(vm.identity != null)
+            if(vm.identity != null && vm.identity.$$state != null && vm.identity.$$state.value != null)
             {
                 return vm.identity.$$state.value['developerId'];
             }

@@ -22,6 +22,11 @@
         });
         $scope.$on('$destroy', unsubscribe);
 
+        var unsubscribe2 = $rootScope.$on('sadeApp:developerInterviewUpdate', function(event, result) {
+            vm.developer.interview = result;
+        });
+        $scope.$on('$destroy', unsubscribe2);
+
         function tabClass(tabName) {
             if(tabName == vm.currentTab) {
                 return 'active';

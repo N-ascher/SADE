@@ -52,7 +52,7 @@
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('sadeApp:interviewUpdate', result);
+            $scope.$emit('sadeApp:developerInterviewUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

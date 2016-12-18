@@ -83,6 +83,31 @@
                 }]
             }
         })
+        .state('developer-detail.edit', {
+            parent: 'developer-detail',
+            url: '/detail/edit',
+            data: {
+                authorities: ['REGISTERED_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/developer/developer-dialog.html',
+                    controller: 'DeveloperDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Developer', function(Developer) {
+                            return Developer.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('developer-detail.interview-new', {
             parent: 'developer-detail',
             url: '/detail/interview/new',
