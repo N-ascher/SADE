@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Test class for the DeveloperResource REST controller.
+ * Teste class for the DeveloperResource REST controller.
  *
  * @see DeveloperResource
  */

@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Test class for the AuditResource REST controller.
+ * Teste class for the AuditResource REST controller.
  *
  */
 @RunWith(SpringRunner.class)

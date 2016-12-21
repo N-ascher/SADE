@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Test class for the UserResource REST controller.
+ * Teste class for the UserResource REST controller.
  *
  * @see UserResource
  */

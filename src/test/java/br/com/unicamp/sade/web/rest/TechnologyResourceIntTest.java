@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Test class for the TechnologyResource REST controller.
+ * Teste class for the TechnologyResource REST controller.
  *
  * @see TechnologyResource
  */

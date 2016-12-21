@@ -21,7 +21,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * Test class for the UserResource REST controller.
+ * Teste class for the UserResource REST controller.
  *
  * @see UserService
  */
@@ -139,7 +139,7 @@ public class UserServiceIntTest {
         token.setTokenValue(tokenSeries + "-data");
         token.setTokenDate(localDate);
         token.setIpAddress("127.0.0.1");
-        token.setUserAgent("Test agent");
+        token.setUserAgent("Teste agent");
         persistentTokenRepository.saveAndFlush(token);
     }
 }

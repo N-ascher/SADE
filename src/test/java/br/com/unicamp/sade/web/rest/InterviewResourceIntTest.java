@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Test class for the InterviewResource REST controller.
+ * Teste class for the InterviewResource REST controller.
  *
  * @see InterviewResource
  */
@@ -87,7 +87,7 @@ public class InterviewResourceIntTest {
         interview = createEntity(em);
     }
 
-//    @Test
+//    @Teste
     @Transactional
     public void createInterview() throws Exception {
         int databaseSizeBeforeCreate = interviewRepository.findAll().size();
@@ -142,7 +142,7 @@ public class InterviewResourceIntTest {
                 .andExpect(status().isNotFound());
     }
 
-    //@Test
+    //@Teste
     @Transactional
     public void updateInterview() throws Exception {
         // Initialize the database
