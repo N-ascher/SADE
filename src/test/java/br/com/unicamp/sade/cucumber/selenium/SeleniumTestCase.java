@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = SeleniumTestCaseContext.class)
+@ContextConfiguration
 @SpringBootTest(classes = SadeApp.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, value = "server.port=9000")
 public abstract class SeleniumTestCase {
     public static String baseUrl() {

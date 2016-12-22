@@ -1,7 +1,12 @@
 package br.com.unicamp.sade.cucumber.selenium.pages;
 
-import br.com.unicamp.sade.cucumber.selenium.PageObject;
+import org.openqa.selenium.WebDriver;
 
-@PageObject
 public class DevelopersManagementPage {
+
+    private WebDriver driver;
+
+    public DevelopersManagementPage(WebDriver driver) {
+        this.driver = driver;
+    }
 }

@@ -1,25 +1,17 @@
 package br.com.unicamp.sade.cucumber.selenium.pages;
 
-import br.com.unicamp.sade.cucumber.selenium.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 
-@PageObject
 public class MenuPage {
-    @Autowired
-    WebDriver driver;
 
-    @Autowired
-    LoginPage loginPage;
+    private WebDriver driver;
 
-    @Autowired
-    DevelopersManagementPage developersManagementPage;
-
-    @Autowired
-    UsersManagementPage usersManagementPage;
+    public MenuPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public DevelopersManagementPage gotToDevelopersManagement() {
         clickAdminMenu();
@@ -30,7 +22,7 @@ public class MenuPage {
                 .until(ExpectedConditions
                         .elementToBeClickable(By.id("developers")));
 
-        return developersManagementPage;
+        return new DevelopersManagementPage(driver);
     }
 
     public UsersManagementPage gotToUsersManagement() {
@@ -42,7 +34,7 @@ public class MenuPage {
                 .until(ExpectedConditions
                         .elementToBeClickable(By.id("users")));
 
-        return usersManagementPage;
+        return new UsersManagementPage(driver);
     }
 
     public LoginPage gotToLogin() {
@@ -52,7 +44,7 @@ public class MenuPage {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions
                         .elementToBeClickable(driver.findElement(By.id("username"))));
-        return loginPage;
+        return new LoginPage(driver);
     }
 
     private void clickAdminMenu() {

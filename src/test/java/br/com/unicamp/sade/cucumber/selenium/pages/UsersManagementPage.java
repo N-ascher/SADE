@@ -1,6 +1,5 @@
 package br.com.unicamp.sade.cucumber.selenium.pages;
 
-import br.com.unicamp.sade.cucumber.selenium.PageObject;
 import br.com.unicamp.sade.service.dto.UserDTO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,17 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@PageObject
 public class UsersManagementPage {
 
-    @Autowired
-    WebDriver driver;
+    private WebDriver driver;
+
+    public UsersManagementPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void createUser(UserDTO userDTO) {
         driver.findElement(By.id("add-user")).click();
@@ -74,4 +74,32 @@ public class UsersManagementPage {
         return new UserDTO(login, firstName, lastName, email, active, langKey, authorities);
     }
 
+    public int numberOfUsers() {
+        return driver.findElements(By.cssSelector("#users table tbody tr")).size();
+    }
+
+    public void deleteUser(String userLogin) {
+        List<WebElement> rows = driver.findElements(By.cssSelector("#users table tbody tr"));
+        rows.stream()
+                .filter(row -> row.findElement(By.cssSelector("td:nth-child(2)")).getText().equals(userLogin))
+                .map(row -> row.findElement(By.cssSelector("td:last-child button.btn-danger")))
+                .forEach(deleteButton -> {
+                    deleteButton.click();
+                    new WebDriverWait(driver, 10)
+                            .until(ExpectedConditions
+                                    .elementToBeClickable(By.className("modal-dialog")));
+                    WebElement confirmButton = driver.findElement(By.cssSelector(".modal-dialog button.btn-danger"));
+                    confirmButton.click();
+                });
+
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions
+                        .elementToBeClickable(By.className("alert-success")));
+    }
+
+    public boolean exists(String login) {
+        return driver.findElements(By.cssSelector("#users table tbody tr td:nth-child(2)"))
+            .stream()
+            .anyMatch(webElement -> webElement.getText().equals(login));
+    }
 }
