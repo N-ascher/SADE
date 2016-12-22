@@ -24,7 +24,7 @@ public class UserDialogPage {
         setLastName(userDTO.getLastName());
         setEmail(userDTO.getEmail());
         setLangKey(userDTO.getLangKey());
-        setAuthorities(userDTO.getAuthorities());
+        selectAuthorities(userDTO.getAuthorities());
 
         submit();
 
@@ -43,10 +43,17 @@ public class UserDialogPage {
                         .elementToBeClickable(By.className("alert-success")));
     }
 
-    public void setAuthorities(Set<String> authorities) {
+    public void selectAuthorities(Set<String> authorities) {
         Select authoritySelect = new Select(driver.findElement(By.name("authority")));
         authorities.forEach(authority -> {
             authoritySelect.selectByVisibleText(authority);
+        });
+    }
+
+    public void deselectAuthorities(Set<String> authorities) {
+        Select authoritySelect = new Select(driver.findElement(By.name("authority")));
+        authorities.forEach(authority -> {
+            authoritySelect.deselectByVisibleText(authority);
         });
     }
 

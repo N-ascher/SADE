@@ -8,6 +8,7 @@ import br.com.unicamp.sade.fixtures.UserFixture;
 import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.service.dto.UserDTO;
 import com.google.common.collect.ImmutableSet;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -70,6 +71,24 @@ public class UsersManagementStepDefs {
         assertFalse(usersManagementPage.exists(userLogin));
     }
 
+    @Given("the user \"([^\"]*)\" is not admin")
+    public void theUserIsNotAdmin(String userLogin) {
+        MenuPage menuPage = new MenuPage(getCurrentDriver());
+
+        Optional<UserDialogPage> editDialogPageOpt = menuPage.gotToUsersManagement().openUserEditDialog(userLogin);
+        assertTrue(editDialogPageOpt.isPresent());
+
+        UserDialogPage editDialogPage = editDialogPageOpt.get();
+        editDialogPage.deselectAuthorities(ImmutableSet.of(AuthoritiesConstants.CONPEC_USER));
+        editDialogPage.submit();
+
+        Optional<ViewUserPage> viewUserPageOpt = menuPage.gotToUsersManagement().openUserInfo(userLogin);
+        assertTrue(viewUserPageOpt.isPresent());
+
+        ViewUserPage viewUserPage = viewUserPageOpt.get();
+        assertFalse(viewUserPage.authorities().contains(AuthoritiesConstants.CONPEC_USER));
+    }
+
     @When("^i edit the user \"([^\"]*)\" to be an admin")
     public void editUserToBeAdmin(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
@@ -78,7 +97,7 @@ public class UsersManagementStepDefs {
         assertTrue(editDialogPageOpt.isPresent());
 
         UserDialogPage editDialogPage = editDialogPageOpt.get();
-        editDialogPage.setAuthorities(ImmutableSet.of(AuthoritiesConstants.CONPEC_USER));
+        editDialogPage.selectAuthorities(ImmutableSet.of(AuthoritiesConstants.CONPEC_USER));
         editDialogPage.submit();
     }
 

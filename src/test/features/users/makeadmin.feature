@@ -5,5 +5,6 @@ Feature: Make user admin
 
   Scenario: results are shown
     Given the username is "admin" and the password is "admin"
-    When i edit the user "user" to be an admin
-    Then the user "user" should be admin
+    And the user "system" is not admin
+    When i edit the user "system" to be an admin
+    Then the user "system" should be admin
