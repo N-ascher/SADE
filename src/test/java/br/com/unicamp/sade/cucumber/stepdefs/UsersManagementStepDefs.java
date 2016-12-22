@@ -27,7 +27,7 @@ public class UsersManagementStepDefs {
 
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        UsersManagementPage usersManagementPage = menuPage.gotToUsersManagement();
+        UsersManagementPage usersManagementPage = menuPage.goToUsersManagement();
         usersManagementPage.openCreateUserDialog().create(newUser);
     }
 
@@ -37,7 +37,7 @@ public class UsersManagementStepDefs {
 
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        UsersManagementPage usersManagementPage = menuPage.gotToUsersManagement();
+        UsersManagementPage usersManagementPage = menuPage.goToUsersManagement();
         Optional<UserDTO> createdUserOpt = usersManagementPage.openUserInfo(newUser.getLogin())
                 .map(ViewUserPage::getUser);
         assertTrue(createdUserOpt.isPresent());
@@ -55,7 +55,7 @@ public class UsersManagementStepDefs {
     public void deleteUser(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        UsersManagementPage usersManagementPage = menuPage.gotToUsersManagement();
+        UsersManagementPage usersManagementPage = menuPage.goToUsersManagement();
 
         assertTrue(usersManagementPage.exists(userLogin));
 
@@ -66,7 +66,7 @@ public class UsersManagementStepDefs {
     public void userDeleted(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        UsersManagementPage usersManagementPage = menuPage.gotToUsersManagement();
+        UsersManagementPage usersManagementPage = menuPage.goToUsersManagement();
 
         assertFalse(usersManagementPage.exists(userLogin));
     }
@@ -75,14 +75,14 @@ public class UsersManagementStepDefs {
     public void theUserIsNotAdmin(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        Optional<UserDialogPage> editDialogPageOpt = menuPage.gotToUsersManagement().openUserEditDialog(userLogin);
+        Optional<UserDialogPage> editDialogPageOpt = menuPage.goToUsersManagement().openUserEditDialog(userLogin);
         assertTrue(editDialogPageOpt.isPresent());
 
         UserDialogPage editDialogPage = editDialogPageOpt.get();
         editDialogPage.deselectAuthorities(ImmutableSet.of(AuthoritiesConstants.CONPEC_USER));
         editDialogPage.submit();
 
-        Optional<ViewUserPage> viewUserPageOpt = menuPage.gotToUsersManagement().openUserInfo(userLogin);
+        Optional<ViewUserPage> viewUserPageOpt = menuPage.goToUsersManagement().openUserInfo(userLogin);
         assertTrue(viewUserPageOpt.isPresent());
 
         ViewUserPage viewUserPage = viewUserPageOpt.get();
@@ -93,7 +93,7 @@ public class UsersManagementStepDefs {
     public void editUserToBeAdmin(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        Optional<UserDialogPage> editDialogPageOpt = menuPage.gotToUsersManagement().openUserEditDialog(userLogin);
+        Optional<UserDialogPage> editDialogPageOpt = menuPage.goToUsersManagement().openUserEditDialog(userLogin);
         assertTrue(editDialogPageOpt.isPresent());
 
         UserDialogPage editDialogPage = editDialogPageOpt.get();
@@ -105,7 +105,7 @@ public class UsersManagementStepDefs {
     public void theUserShouldBeAdmin(String userLogin) {
         MenuPage menuPage = new MenuPage(getCurrentDriver());
 
-        Optional<ViewUserPage> viewUserPageOpt = menuPage.gotToUsersManagement().openUserInfo(userLogin);
+        Optional<ViewUserPage> viewUserPageOpt = menuPage.goToUsersManagement().openUserInfo(userLogin);
         assertTrue(viewUserPageOpt.isPresent());
 
         ViewUserPage viewUserPage = viewUserPageOpt.get();

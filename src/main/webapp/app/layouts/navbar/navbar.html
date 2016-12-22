@@ -33,27 +33,27 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
                         <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="settings" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="settings" ng-click="vm.collapseNavbar()" id="account-settings">
                                 <span class="glyphicon glyphicon-wrench"></span>&nbsp;
                                 <span data-translate="global.menu.account.settings">Settings</span>
                             </a>
                         </li>
 
                         <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="developer-detail({id: vm.developerId})" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="developer-detail({id: vm.developerId})" ng-click="vm.collapseNavbar()" id="dev-accound-settings">
                                 <span class="glyphicon glyphicon-wrench"></span>&nbsp;
-                                <span>Minhas informações</span>
+                                <span data-translate="global.menu.account.myinformation">My Information</span>
                             </a>
                         </li>
 
                         <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="password" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="password" ng-click="vm.collapseNavbar()" id="change-password">
                                 <span class="glyphicon glyphicon-lock"></span>&nbsp;
                                 <span data-translate="global.menu.account.password">Password</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="sessions" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="sessions" ng-click="vm.collapseNavbar()" id="account-sessions" >
                                 <span class="glyphicon glyphicon-cloud"></span>&nbsp;
                                 <span data-translate="global.menu.account.sessions">Sessions</span>
                             </a>
@@ -64,7 +64,7 @@
                                 <span data-translate="global.menu.account.logout">Sign out</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" ng-switch-when="false">
+                        <liui-sref-active="active" ng-switch-when="false">
                             <a href="" ng-click="vm.login()" id="login">
                                 <span class="glyphicon glyphicon-log-in"></span>&nbsp;
                                 <span data-translate="global.menu.account.login">Sign in</span>

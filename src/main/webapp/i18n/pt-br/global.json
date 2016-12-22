@@ -12,7 +12,8 @@
                 "sessions": "Sessões",
                 "login": "Entrar",
                 "logout": "Sair",
-                "register": "Registrar"
+                "register": "Registrar",
+                "myinformation": "Minhas Informações"
             },
             "admin": {
                 "main": "Administração",

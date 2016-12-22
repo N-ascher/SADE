@@ -13,7 +13,7 @@ public class MenuPage {
         this.driver = driver;
     }
 
-    public DevelopersManagementPage gotToDevelopersManagement() {
+    public DevelopersManagementPage goToDevelopersManagement() {
         clickAdminMenu();
 
         driver.findElement(By.id("developers-management")).click();
@@ -25,7 +25,7 @@ public class MenuPage {
         return new DevelopersManagementPage(driver);
     }
 
-    public UsersManagementPage gotToUsersManagement() {
+    public UsersManagementPage goToUsersManagement() {
         clickAdminMenu();
 
         driver.findElement(By.id("users-management")).click();
@@ -37,7 +37,7 @@ public class MenuPage {
         return new UsersManagementPage(driver);
     }
 
-    public LoginPage gotToLogin() {
+    public LoginPage goToLogin() {
         clickAccountMenu();
 
         driver.findElement(By.id("login")).click();
@@ -45,6 +45,17 @@ public class MenuPage {
                 .until(ExpectedConditions
                         .elementToBeClickable(driver.findElement(By.id("username"))));
         return new LoginPage(driver);
+    }
+
+    public ProfileSettingsPage goToProfileSettings() {
+        clickAccountMenu();
+
+        driver.findElement(By.id("account-settings")).click();
+        new WebDriverWait(driver, 10)
+                .until(ExpectedConditions
+                        .presenceOfAllElementsLocatedBy(By.id("settings")));
+
+        return new ProfileSettingsPage(driver);
     }
 
     private void clickAdminMenu() {
