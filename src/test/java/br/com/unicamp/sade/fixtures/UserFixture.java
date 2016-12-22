@@ -6,7 +6,7 @@ import com.google.common.collect.ImmutableSet;
 
 public class UserFixture {
 
-    public static UserDTO charmander() {
+    public static UserDTO admin() {
         return new UserDTO("charmander", "Charmander", "da Silva Sauro", "charmander@sauro.com", true, "pt-br",
                 ImmutableSet.of(AuthoritiesConstants.CONPEC_USER, AuthoritiesConstants.REGISTERED_USER));
     }

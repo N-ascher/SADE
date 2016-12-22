@@ -5,5 +5,5 @@ Feature: Delete a user at SADE
 
   Scenario: results are shown
     Given the username is "admin" and the password is "admin"
-    When i delete the user "user"
-    Then the user "user" should not exist
+    When i delete the user "charmander"
+    Then the user "charmander" should not exist

@@ -1,5 +1,6 @@
 package br.com.unicamp.sade.cucumber.stepdefs;
 
+import br.com.unicamp.sade.cucumber.selenium.SeleniumTestCase;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.By;
@@ -8,9 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static br.com.unicamp.sade.cucumber.selenium.Driver.closeCurrentDriver;
 import static br.com.unicamp.sade.cucumber.selenium.Driver.getCurrentDriver;
-import static br.com.unicamp.sade.cucumber.selenium.SeleniumTestCase.baseUrl;
 
-public class CommonStepDefs {
+public class CommonStepDefs extends SeleniumTestCase {
+
+    public static String baseUrl() {
+        return "http://localhost:9000";
+    }
+
     @Before
     public void setup() {
         getCurrentDriver().get(baseUrl());
