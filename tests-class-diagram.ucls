@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.12" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.CommonStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/CommonStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="133" width="181" x="6083" y="624"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.UsersManagementStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/UsersManagementStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="205" width="313" x="1199" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.DeveloperStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/DeveloperStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="169" width="230" x="6305" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="br.com.unicamp.sade.cucumber.CucumberTest" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/CucumberTest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="79" width="143" x="5297" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.InterviewStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/InterviewStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="270" x="1552" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.PreDefinedQuestionsStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/PreDefinedQuestionsStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="151" width="283" x="4417" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.SecurityStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/SecurityStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="169" width="247" x="3280" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="br.com.unicamp.sade.cucumber.stepdefs.AccountStepDefs" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/stepdefs/AccountStepDefs.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="187" width="270" x="2970" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="br.com.unicamp.sade.cucumber.selenium.Driver.BrowserCleanup" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/Driver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="182" x="2191" y="624"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="br.com.unicamp.sade.cucumber.selenium.Driver" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/Driver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="182" x="2191" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="br.com.unicamp.sade.cucumber.selenium.SeleniumTestCase" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/SeleniumTestCase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="182" x="6083" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.account.ProfileSettingsPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/account/ProfileSettingsPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="223" width="246" x="2413" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.developer.DeveloperInformationPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/developer/DeveloperInformationPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="349" width="253" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.home.HomePage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/home/HomePage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="249" x="334" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.interview.InterviewPage" 
+    project="sade" file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/interview/InterviewPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="250" x="909" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" 
+    name="br.com.unicamp.sade.cucumber.selenium.pages.predefinedquestion.PreDefinedQuestionsManagementPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/predefinedquestion/PreDefinedQuestionsManagementPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="356" x="3567" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.developer.DeveloperSignUpPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/developer/DeveloperSignUpPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="547" width="253" x="7508" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.account.LoginPage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/account/LoginPage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="241" width="246" x="623" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.developer.EditDeveloperPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/developer/EditDeveloperPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="367" width="253" x="6575" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" 
+    name="br.com.unicamp.sade.cucumber.selenium.pages.predefinedquestion.PreDefinedQuestionDialogPage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/predefinedquestion/PreDefinedQuestionDialogPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="291" x="5480" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.account.ForgotPasswordPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/account/ForgotPasswordPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="246" x="5011" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.user.ViewUserPage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/user/ViewUserPage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="241" width="231" x="2699" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.error.AccessDeniedPage" 
+    project="sade" file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/error/AccessDeniedPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="232" x="5811" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.home.MenuPage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/home/MenuPage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="241" width="414" x="3963" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.user.UsersManagementPage" 
+    project="sade" file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/user/UsersManagementPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="223" width="289" x="1862" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.developer.DevelopersManagementPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/developer/DevelopersManagementPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="310" x="6868" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.user.UserDialogPage" project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/user/UserDialogPage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="259" width="231" x="4740" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="br.com.unicamp.sade.cucumber.selenium.pages.interview.InterviewDialogPage" 
+    project="sade" 
+    file="/sade/src/test/java/br/com/unicamp/sade/cucumber/selenium/pages/interview/InterviewDialogPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="205" width="250" x="7218" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <nesting id="30">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
