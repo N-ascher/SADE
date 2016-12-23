@@ -7,6 +7,7 @@ import br.com.unicamp.sade.repository.UserRepository;
 import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.security.SecurityUtils;
 import br.com.unicamp.sade.service.InterviewService;
+import br.com.unicamp.sade.service.dto.InterviewDTO;
 import br.com.unicamp.sade.web.rest.util.HeaderUtil;
 import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
@@ -57,7 +58,7 @@ public class InterviewResource {
     @PostMapping("/interviews")
     @Timed
     @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
-    public ResponseEntity<Interview> createInterview(@RequestBody Interview interview) throws URISyntaxException {
+    public ResponseEntity<Interview> createInterview(@RequestBody InterviewDTO interview) throws URISyntaxException {
         log.debug("REST request to save Interview : {}", interview);
         if (interview.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("interview", "idexists", "A new interview cannot already have an ID")).body(null);
@@ -88,9 +89,6 @@ public class InterviewResource {
     @PreAuthorize("hasAuthority('" + AuthoritiesConstants.CONPEC_USER + "')")
     public ResponseEntity<Interview> updateInterview(@RequestBody Interview interview) throws URISyntaxException {
         log.debug("REST request to update Interview : {}", interview);
-        if (interview.getId() == null) {
-            return createInterview(interview);
-        }
         Optional<User> loggedUser = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin());
         if(!loggedUser.isPresent()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);

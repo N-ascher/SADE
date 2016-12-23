@@ -40,7 +40,8 @@
                         </li>
 
                         <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="developer-detail({id: vm.developerId})" ng-click="vm.collapseNavbar()" id="dev-accound-settings">
+                            <a ui-sref="developer-detail({id: vm.developerId})" ng-click="vm.collapseNavbar()"
+                               id="dev-account-settings">
                                 <span class="glyphicon glyphicon-wrench"></span>&nbsp;
                                 <span data-translate="global.menu.account.myinformation">My Information</span>
                             </a>
@@ -64,7 +65,7 @@
                                 <span data-translate="global.menu.account.logout">Sign out</span>
                             </a>
                         </li>
-                        <liui-sref-active="active" ng-switch-when="false">
+                        <li ui-sref-active="active" ng-switch-when="false">
                             <a href="" ng-click="vm.login()" id="login">
                                 <span class="glyphicon glyphicon-log-in"></span>&nbsp;
                                 <span data-translate="global.menu.account.login">Sign in</span>
@@ -94,7 +95,8 @@
                             </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a ui-sref="pre-defined-question" ng-click="vm.collapseNavbar()">
+                            <a ui-sref="pre-defined-question" ng-click="vm.collapseNavbar()"
+                               id="pre-defined-question-management">
                                 <span class="glyphicon glyphicon-user"></span>&nbsp;
                                 <span data-translate="global.menu.admin.predefined_questions">Pre-defined Interview
                                     Questions</span>

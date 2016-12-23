@@ -7,6 +7,7 @@ import br.com.unicamp.sade.repository.CommentRepository;
 import br.com.unicamp.sade.repository.DeveloperRepository;
 import br.com.unicamp.sade.repository.InterviewRepository;
 import br.com.unicamp.sade.repository.PreDefinedQuestionRepository;
+import br.com.unicamp.sade.service.dto.InterviewDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,17 +32,22 @@ public class InterviewService {
     @Inject
     InterviewRepository interviewRepository;
 
-    public Interview create(Interview interview) {
-        Developer developer = developerRepository.findOne(interview.getDeveloper().getId());
+    public Interview create(InterviewDTO interviewDTO) {
+        Interview interview = new Interview();
+        interview.setHourValue(interviewDTO.getHourValue());
+
+        Developer developer = developerRepository.findOne(interviewDTO.getDeveloper().getId());
         interview.setDeveloper(developer);
 
-        interview.getQuestions().forEach(interviewQuestion -> {
+        interviewDTO.getQuestions().forEach(interviewQuestion -> {
+            interview.addInterviewQuestion(interviewQuestion);
             interviewQuestion.setInterview(interview);
             PreDefinedQuestion preDefinedQuestion = preDefinedQuestionRepository.findOne(interviewQuestion.getQuestion().getId());
             interviewQuestion.setQuestion(preDefinedQuestion);
         });
 
-        interview.getComments().forEach(comment -> {
+        interviewDTO.getComments().forEach(comment -> {
+            interview.addComments(comment);
             comment.setInterview(interview);
         });
 

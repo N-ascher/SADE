@@ -1,5 +1,5 @@
 
-<div>
+<div id="developer-detail">
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div class="profile">
@@ -15,51 +15,51 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <p><strong><span data-translate="sadeApp.developer.email">Email</span>: </strong>
-                                    {{vm.developer.user.email}}
+                                    <span id="email">{{vm.developer.user.email}}</span>
                                 </p>
                                 <p><strong><span data-translate="sadeApp.developer.user">User</span>: </strong>
-                                    {{vm.developer.user.login}}</p>
+                                    <span id="login">{{vm.developer.user.login}}</span></p>
                                 <p><strong><span data-translate="sadeApp.developer.phoneNumber">Phone number</span>: </strong>
-                                    {{vm.developer.phoneNumber}}</p>
+                                    <span id="phoneNumber">{{vm.developer.phoneNumber}}</span></p>
                                 <p><strong><span data-translate="sadeApp.developer.mobileNumber">Mobile number</span>: </strong>
-                                    {{vm.developer.mobileNumber}}</p>
+                                    <span id="mobileNumber">{{vm.developer.mobileNumber}}</span></p>
                                 <p><strong><span data-translate="sadeApp.developer.document">Document</span>: </strong>
-                                    {{vm.developer.document}}</p>
+                                    <span id="document">{{vm.developer.document}}</span></p>
                             </div>
                             <div class="col-md-8">
                                 <p class="row">
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.street">Street</span>:</strong>
-                                        {{vm.developer.address.street}}
+                                        <span id="street">{{vm.developer.address.street}}</span>
                                     </span>
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.number">Number</span>:</strong>
-                                        {{vm.developer.address.number}}
+                                        <span id="number">{{vm.developer.address.number}}</span>
                                     </span>
                                 </p>
                                 <p class="row">
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.neighborhood">Neighborhood</span>:</strong>
-                                        {{vm.developer.address.neighborhood}}
+                                        <span id="neighborhood">{{vm.developer.address.neighborhood}}</span>
                                     </span>
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.city">City</span>:</strong>
-                                        {{vm.developer.address.city}}
+                                        <span id="city">{{vm.developer.address.city}}</span>
                                     </span>
                                 </p>
                                 <p class="row">
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.state">State</span>:</strong>
-                                        {{vm.developer.address.state}}
+                                        <span id="state">{{vm.developer.address.state}}</span>
                                     </span>
                                     <span class="col-md-6">
                                         <strong><span data-translate="sadeApp.developer.address.postalCode">Postal Code</span>:</strong>
-                                        {{vm.developer.address.postalCode}}
+                                        <span id="postalCode">{{vm.developer.address.postalCode}}</span>
                                     </span>
                                 </p>
                                 <p>
                                     <strong><span data-translate="sadeApp.developer.address.complement">Complement</span>:</strong>
-                                    {{vm.developer.address.complement}}
+                                    <span id="complement">{{vm.developer.address.complement}}</span>
                                 </p>
                             </div>
                         </div>
@@ -86,20 +86,20 @@
                         <p><strong><span data-translate="sadeApp.developer.linkedIn">LinkedIn</span>: </strong>
                             <a ng-if="vm.developer.linkedIn" href="{{vm.developer.linkedIn}}" target='_blank'>
                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                                {{vm.developer.linkedIn}}
+                                <span id="linkedIn">{{vm.developer.linkedIn}}</span>
                             </a>
                         </p>
                         <p><strong><span data-translate="sadeApp.developer.gitHub">GitHub</span>: </strong>
                             <a ng-if="vm.developer.gitHub" href="{{vm.developer.gitHub}}" target='_blank'>
                                 <i class="fa fa-github-alt" aria-hidden="true"></i>
-                                {{vm.developer.gitHub}}
+                                <span id="gitHub">{{vm.developer.gitHub}}</span>
                             </a>
                         </p>
                         <p>
                             <strong>
                                 <span data-translate="sadeApp.developer.availability">Availability</span>:
                             </strong>
-                            <span>{{vm.developer.availability}}h</span>
+                            <span id="availability">{{vm.developer.availability}}h</span>
                         </p>
                         <p>
                             <strong>
@@ -119,7 +119,8 @@
                     <div ng-if="!vm.developer.interview" class="col-xs-10 col-xs-offset-1">
                         <div class="row text-center">
                             <p data-translate="sadeApp.developer.actions.emptyInterview">There's no registered interview</p>
-                            <button class="btn btn-primary" ui-sref="developer-detail.interview-new" >
+                            <button id="add-interview" class="btn btn-primary"
+                                    ui-sref="developer-detail.interview-new" >
                                 <span class="glyphicon glyphicon-plus"></span>
                                 <span  data-translate="sadeApp.developer.actions.createInterview">
                                     Create new Interview
@@ -134,15 +135,16 @@
                                     <strong>
                                         <span data-translate="sadeApp.developer.interview.hourValue">Hour Value</span>:
                                     </strong>
-                                    <span>{{vm.developer.interview.hourValue}}</span>
+                                    <span id="hourValue">{{vm.developer.interview.hourValue}}</span>
                                 </p>
 
-                                <p ng-repeat="question in vm.developer.interview.questions track by question.questionTitle">
+                                <p ng-repeat="question in vm.developer.interview.questions">
                                     <strong>
                                         <span>{{question.questionTitle}}</span>
                                     </strong>
                                     <br/>
-                                    <span>{{question.response}}</span>
+                                    <span id="question{{question.id}}" class="question-answer">{{question
+                                        .response}}</span>
                                 </p>
 
                                 <p>
@@ -152,15 +154,16 @@
                                 </p>
 
                                 <p ng-repeat="comment in vm.developer.interview.comments track by comment.content">
-                                    <span>{{comment.content}}</span>
+                                    <span id="comment{{comment.id}}" class="interview-comment">{{comment
+                                        .content}}</span>
                                 </p>
 
-                                <button class="btn btn-primary"
+                                <button id="edit-interview" class="btn btn-primary"
                                         ui-sref="developer-detail.interview-edit({interviewId: vm.developer.interview.id})" >
                                     <span class="glyphicon glyphicon-edit"></span>
-                                <span  data-translate="sadeApp.developer.actions.editInterview">
-                                    Edit Interview
-                                </span>
+                                    <span  data-translate="sadeApp.developer.actions.editInterview">
+                                        Edit Interview
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -178,7 +181,8 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="developer-detail.edit({id:vm.developer.id})" class="btn btn-primary">
+    <button id="edit-developer" type="button" ui-sref="developer-detail.edit({id:vm.developer.id})"
+            class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>

@@ -1,4 +1,4 @@
-package br.com.unicamp.sade.cucumber.selenium.pages;
+package br.com.unicamp.sade.cucumber.selenium.pages.user;
 
 import br.com.unicamp.sade.service.dto.UserDTO;
 import org.openqa.selenium.By;

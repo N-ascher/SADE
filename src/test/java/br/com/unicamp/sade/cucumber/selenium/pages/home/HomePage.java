@@ -1,5 +1,6 @@
-package br.com.unicamp.sade.cucumber.selenium.pages;
+package br.com.unicamp.sade.cucumber.selenium.pages.home;
 
+import br.com.unicamp.sade.cucumber.selenium.pages.developer.DeveloperSignUpPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

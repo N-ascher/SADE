@@ -1,4 +1,4 @@
-package br.com.unicamp.sade.cucumber.selenium.pages;
+package br.com.unicamp.sade.cucumber.selenium.pages.user;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

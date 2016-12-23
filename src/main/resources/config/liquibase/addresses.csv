@@ -1,2 +1,3 @@
 id;street;number;neighborhood;city;state;complement;postal_code
-1;Rua dos Bobos;0;Bairro dos Bobos;Campinas;São Paulo;Apartamento 10;12123123
+1;Rua dos Bobos;10;Bairro dos Bobos;Campinas;São Paulo;Apartamento 10;12123123
+2;Rua dos Bobos;12;Bairro dos Bobos;Campinas;São Paulo;Apartamento 12;12123123

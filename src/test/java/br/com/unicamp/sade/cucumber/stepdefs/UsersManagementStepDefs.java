@@ -1,9 +1,9 @@
 package br.com.unicamp.sade.cucumber.stepdefs;
 
-import br.com.unicamp.sade.cucumber.selenium.pages.UserDialogPage;
-import br.com.unicamp.sade.cucumber.selenium.pages.ViewUserPage;
-import br.com.unicamp.sade.cucumber.selenium.pages.MenuPage;
-import br.com.unicamp.sade.cucumber.selenium.pages.UsersManagementPage;
+import br.com.unicamp.sade.cucumber.selenium.pages.user.UserDialogPage;
+import br.com.unicamp.sade.cucumber.selenium.pages.user.ViewUserPage;
+import br.com.unicamp.sade.cucumber.selenium.pages.home.MenuPage;
+import br.com.unicamp.sade.cucumber.selenium.pages.user.UsersManagementPage;
 import br.com.unicamp.sade.fixtures.UserFixture;
 import br.com.unicamp.sade.security.AuthoritiesConstants;
 import br.com.unicamp.sade.service.dto.UserDTO;

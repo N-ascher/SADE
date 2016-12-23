@@ -47,7 +47,7 @@ public class Interview implements Serializable {
     private Set<Comment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "interview", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
-    private Set<InterviewQuestion> questions;
+    private Set<InterviewQuestion> questions = new HashSet<>();
 
     public Long getId() {
         return id;

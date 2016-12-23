@@ -26,8 +26,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -87,25 +85,6 @@ public class InterviewResourceIntTest {
         interview = createEntity(em);
     }
 
-//    @Teste
-    @Transactional
-    public void createInterview() throws Exception {
-        int databaseSizeBeforeCreate = interviewRepository.findAll().size();
-
-        // Create the Interview
-
-        restInterviewMockMvc.perform(post("/api/interviews")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(interview)))
-                .andExpect(status().isCreated());
-
-        // Validate the Interview in the database
-        List<Interview> interviews = interviewRepository.findAll();
-        assertThat(interviews).hasSize(databaseSizeBeforeCreate + 1);
-        Interview testInterview = interviews.get(interviews.size() - 1);
-        assertThat(testInterview.getHourValue()).isEqualTo(DEFAULT_HOUR_VALUE);
-    }
-
     @Test
     @Transactional
     public void getAllInterviews() throws Exception {
@@ -140,30 +119,6 @@ public class InterviewResourceIntTest {
         // Get the interview
         restInterviewMockMvc.perform(get("/api/interviews/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
-    }
-
-    //@Teste
-    @Transactional
-    public void updateInterview() throws Exception {
-        // Initialize the database
-        interviewRepository.saveAndFlush(interview);
-        int databaseSizeBeforeUpdate = interviewRepository.findAll().size();
-
-        // Update the interview
-        Interview updatedInterview = interviewRepository.findOne(interview.getId());
-        updatedInterview
-                .hourValue(UPDATED_HOUR_VALUE);
-
-        restInterviewMockMvc.perform(put("/api/interviews")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(updatedInterview)))
-                .andExpect(status().isOk());
-
-        // Validate the Interview in the database
-        List<Interview> interviews = interviewRepository.findAll();
-        assertThat(interviews).hasSize(databaseSizeBeforeUpdate);
-        Interview testInterview = interviews.get(interviews.size() - 1);
-        assertThat(testInterview.getHourValue()).isEqualTo(UPDATED_HOUR_VALUE);
     }
 
     @Test
